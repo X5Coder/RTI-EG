@@ -1,1 +1,347 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RTI Egypt | التوظيف والتسويق الرقمي</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200..900&display=swap" rel="stylesheet">
+    <script src="js/main.js" defer></script>
+</head>
+<body class="light">
+    <!-- Navigation -->
+    <nav class="nav-wrapper">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">R</div>
+                <span class="logo-text">RTI<span class="logo-highlight">.EG</span></span>
+            </a>
+            
+            <div class="nav-links">
+                <div class="desktop-links">
+                    <a href="index.html" class="nav-link active">الرئيسية</a>
+                    <a href="apply.html" class="nav-link">انضم للفريق</a>
+                    <a href="status.html" class="nav-link">متابعة طلبك</a>
+                    <a href="terms.html" class="nav-link">الشروط</a>
+                </div>
+                
+                <button class="settings-btn" onclick="openSettings()">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    المقر الرسمي والوحيد لشركة RTI مصر
+                </div>
+                <h1 class="hero-title">
+                    مستقبلك المهني <br>
+                    <span class="text-blue">يبدأ هنا</span>.
+                </h1>
+                <p class="hero-description">
+                    RTI هي شريكك الموثوق منذ 8 سنوات في توريد العمالة الماهرة والتسويق الاحترافي. نظامنا يضمن لك حقك الكامل وفرص نمو غير محدودة.
+                </p>
+                <div class="hero-buttons">
+                    <a href="apply.html" class="btn-primary">انضم للفريق الآن</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-glow"></div>
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000" alt="Professional Team" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-subtitle">لماذا تختار RTI؟</h2>
+                <h3 class="section-title">مميزات العمل معنا</h3>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🌐</div>
+                    <h4 class="benefit-title">العمل أونلاين</h4>
+                    <p class="benefit-desc">إمكانية العمل من أي مكان بكل سهولة.</p>
+                </div>
+                
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">⏰</div>
+                    <h4 class="benefit-title">بدون ساعات عمل محددة</h4>
+                    <p class="benefit-desc">أنت من يحدد وقت عملك بما يناسبك.</p>
+                </div>
+                
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">💵</div>
+                    <h4 class="benefit-title">مرتبات عالية</h4>
+                    <p class="benefit-desc">نظام أجور منافس جداً في السوق المصري.</p>
+                </div>
+                
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🧠</div>
+                    <h4 class="benefit-title">اكتساب خبرة</h4>
+                    <p class="benefit-desc">تطوير مهاراتك في التسويق والقيادة.</p>
+                </div>
+                
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🎁</div>
+                    <h4 class="benefit-title">بونص ومكافآت</h4>
+                    <p class="benefit-desc">مكافآت دورية من الشركة للمتميزين.</p>
+                </div>
+                
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">👨‍🏫</div>
+                    <h4 class="benefit-title">متابعة دورية</h4>
+                    <p class="benefit-desc">ليدر مخصص لمساعدتك في كل خطوة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Roadmap -->
+    <section class="roadmap-section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-subtitle">خريطة النمو المهني</h2>
+                <h3 class="section-title">مسارك من البداية للقيادة</h3>
+            </div>
+            
+            <div class="roadmap">
+                <div class="roadmap-line"></div>
+                
+                <div class="roadmap-cards">
+                    <div class="roadmap-card reveal">
+                        <div class="card-number">01</div>
+                        <h4 class="card-title">متدرب (بونص)</h4>
+                        <p class="card-subtitle">أول 7 أيام فترة بونص استثنائية</p>
+                        <div class="salary-card">
+                            <span class="salary-amount">100 جنيه</span>
+                            <p class="salary-label">عن كل عميل ناجح</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-card highlight reveal">
+                        <div class="promotion-badge">ترقية رسمية</div>
+                        <div class="card-number dark">02</div>
+                        <h4 class="card-title">ليدر (Leader)</h4>
+                        <p class="card-subtitle">إدارة فرق التدريب</p>
+                        <div class="salary-card dark">
+                            <span class="salary-amount">6,000 جنيه</span>
+                            <p class="salary-label">راتب ثابت شهرياً</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-card reveal">
+                        <div class="card-number green">03</div>
+                        <h4 class="card-title">تيم ليدر (TL)</h4>
+                        <p class="card-subtitle">الرقابة والتقارير</p>
+                        <div class="salary-card green">
+                            <span class="salary-amount">10,000 جنيه</span>
+                            <p class="salary-label">راتب ثابت شهرياً</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="services-content">
+                    <h3 class="services-title">خدمات إضافية للموظفين</h3>
+                    
+                    <div class="services-cards">
+                        <div class="service-card">
+                            <div class="service-icon money">💰</div>
+                            <h5 class="service-title">سلفة من المرتب</h5>
+                            <p class="service-desc">نوفر نظام سلف ميسر للحالات الطارئة بعد أول شهر عمل.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon rocket">🚀</div>
+                            <h5 class="service-title">بونص أول 7 أيام</h5>
+                            <p class="service-desc">فترة بونص ترحيبي بمعدلات إنتاج مضاعفة.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="partners-card">
+                    <h4 class="partners-title">شركاء النجاح</h4>
+                    <ul class="partners-list">
+                        <li class="partner-item">
+                            <span class="partner-number">01</span>
+                            مصانع المنطقة الصناعية بـ 6 أكتوبر
+                        </li>
+                        <li class="partner-item">
+                            <span class="partner-number">02</span>
+                            شركات الشحن الكبرى (أمازون، نون)
+                        </li>
+                        <li class="partner-item">
+                            <span class="partner-number">03</span>
+                            سلاسل مطاعم الوجبات السريعة العالمية
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">R</div>
+                        <span class="footer-logo-text">RTI<span class="logo-highlight">.EG</span></span>
+                    </div>
+                    <p class="footer-description">
+                        المقر الرسمي والوحيد لشركة RTI مصر. حلول متكاملة لتوريد العمالة الماهرة منذ 8 سنوات.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="apply.html">انضم للفريق</a></li>
+                        <li><a href="status.html">تتبع طلبك</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">الدعم</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://api.whatsapp.com/send?phone=201016839352&text=أهلاً RTI، أود الاستفسار عن خدماتكم" target="_blank">تواصل معنا</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=201016839352&text=إبلاغ عن مشكلة فنية في موقع RTI" target="_blank">الإبلاغ عن مشكلة</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">التوثيق الحكومي</h4>
+                    <div class="certification-box">
+                        <p class="certification-text">
+                            الشركة مسجلة رسمياً وتخضع لرقابة وزارة القوى العاملة المصرية.
+                        </p>
+                        <div class="badges">
+                            <span class="badge certified">Certified EG</span>
+                            <span class="badge verified">Verified Official</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <span>سجل تجاري: 1029384756</span>
+                    <span>بطاقة ضريبية: 998-112-445</span>
+                </div>
+                <p class="copyright">© 2024 RTI.EG. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="modal-overlay" onclick="closeSettings()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">الإعدادات</h2>
+                <button class="modal-close" onclick="closeSettings()">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Theme Toggle -->
+                <div class="settings-group">
+                    <h3 class="settings-title">المظهر</h3>
+                    <div class="theme-toggle">
+                        <button class="theme-btn" onclick="setTheme('light')" id="lightThemeBtn">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0z"/>
+                            </svg>
+                            نهاري
+                        </button>
+                        <button class="theme-btn active" onclick="setTheme('dark')" id="darkThemeBtn">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                            </svg>
+                            ليلي
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="settings-group">
+                    <h3 class="settings-title">الوصول السريع</h3>
+                    <div class="quick-links">
+                        <a href="apply.html" class="quick-link">
+                            <span>انضم للفريق الآن</span>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </a>
+                        <a href="status.html" class="quick-link">
+                            <span>تتبع طلبك</span>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </a>
+                        <a href="terms.html" class="quick-link">
+                            <span>الشروط والقواعد</span>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact -->
+                <div class="settings-group">
+                    <h3 class="settings-title">تواصل سريع</h3>
+                    <div class="contact-links">
+                        <button class="contact-btn whatsapp" onclick="openWhatsApp('أهلاً RTI، أود التواصل معكم بخصوص...')">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.87 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            تواصل معنا
+                        </button>
+                        
+                        <button class="contact-btn report" onclick="openWhatsApp('إبلاغ عن مشكلة فنية في موقع RTI')">
+                            الإبلاغ عن مشكلة فنية
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <p class="version">RTI Platform v4.3</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
