@@ -1,347 +1,1657 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RTI Egypt | التوظيف والتسويق الرقمي</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200..900&display=swap" rel="stylesheet">
-    <script src="js/main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RTI – EG | استمارة التقديم الرسمية</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS v4 Browser CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+    body {
+      font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Simple scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #9ca3af;
+      border-radius: 999px;
+    }
+
+    /* Modal open helper */
+    .modal-open {
+      overflow: hidden;
+    }
+
+    /* Animation for form steps */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .form-step {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Smooth transition for upload status */
+    .upload-status {
+      transition: all 0.3s ease;
+    }
+
+    /* Animation for image modal */
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .image-modal-content {
+      animation: zoomIn 0.3s ease-out;
+    }
+
+    /* Floating animation for CTA buttons */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .floating-btn {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Gradient animation for hero section */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gradient-bg {
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    /* Card hover effects */
+    .hover-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+    
+    .hover-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Pulse animation for important elements */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(52, 211, 153, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(52, 211, 153, 0.8); }
+    }
+
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    /* Slide in animation for sections */
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-animate {
+      animation: slideInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    /* Bounce animation for notification */
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      60% { opacity: 1; transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .bounce-in {
+      animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Shine animation for premium elements */
+    @keyframes shine {
+      0% { background-position: -100px; }
+      40%, 100% { background-position: 300px; }
+    }
+
+    .shine-effect {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      background-size: 200px 100%;
+      animation: shine 3s infinite;
+    }
+
+    /* Progress bar animation */
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .progress-bar {
+      animation: progress 1.5s ease-out;
+    }
+
+    /* Typewriter effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #10b981 }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glass morphism effect */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Wave animation */
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-30px); }
+      100% { transform: translateX(0); }
+    }
+
+    .wave-animation {
+      animation: wave 5s ease-in-out infinite;
+    }
+
+    /* Confetti animation */
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+    }
+  </style>
 </head>
-<body class="light">
-    <!-- Navigation -->
-    <nav class="nav-wrapper">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">R</div>
-                <span class="logo-text">RTI<span class="logo-highlight">.EG</span></span>
-            </a>
-            
-            <div class="nav-links">
-                <div class="desktop-links">
-                    <a href="index.html" class="nav-link active">الرئيسية</a>
-                    <a href="apply.html" class="nav-link">انضم للفريق</a>
-                    <a href="status.html" class="nav-link">متابعة طلبك</a>
-                    <a href="terms.html" class="nav-link">الشروط</a>
-                </div>
-                
-                <button class="settings-btn" onclick="openSettings()">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="badge">
-                    <span class="badge-dot"></span>
-                    المقر الرسمي والوحيد لشركة RTI مصر
-                </div>
-                <h1 class="hero-title">
-                    مستقبلك المهني <br>
-                    <span class="text-blue">يبدأ هنا</span>.
-                </h1>
-                <p class="hero-description">
-                    RTI هي شريكك الموثوق منذ 8 سنوات في توريد العمالة الماهرة والتسويق الاحترافي. نظامنا يضمن لك حقك الكامل وفرص نمو غير محدودة.
-                </p>
-                <div class="hero-buttons">
-                    <a href="apply.html" class="btn-primary">انضم للفريق الآن</a>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <div class="image-glow"></div>
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000" alt="Professional Team" class="hero-img">
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits-section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-subtitle">لماذا تختار RTI؟</h2>
-                <h3 class="section-title">مميزات العمل معنا</h3>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">🌐</div>
-                    <h4 class="benefit-title">العمل أونلاين</h4>
-                    <p class="benefit-desc">إمكانية العمل من أي مكان بكل سهولة.</p>
-                </div>
-                
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">⏰</div>
-                    <h4 class="benefit-title">بدون ساعات عمل محددة</h4>
-                    <p class="benefit-desc">أنت من يحدد وقت عملك بما يناسبك.</p>
-                </div>
-                
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">💵</div>
-                    <h4 class="benefit-title">مرتبات عالية</h4>
-                    <p class="benefit-desc">نظام أجور منافس جداً في السوق المصري.</p>
-                </div>
-                
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">🧠</div>
-                    <h4 class="benefit-title">اكتساب خبرة</h4>
-                    <p class="benefit-desc">تطوير مهاراتك في التسويق والقيادة.</p>
-                </div>
-                
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">🎁</div>
-                    <h4 class="benefit-title">بونص ومكافآت</h4>
-                    <p class="benefit-desc">مكافآت دورية من الشركة للمتميزين.</p>
-                </div>
-                
-                <div class="benefit-card reveal">
-                    <div class="benefit-icon">👨‍🏫</div>
-                    <h4 class="benefit-title">متابعة دورية</h4>
-                    <p class="benefit-desc">ليدر مخصص لمساعدتك في كل خطوة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Growth Roadmap -->
-    <section class="roadmap-section bg-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-subtitle">خريطة النمو المهني</h2>
-                <h3 class="section-title">مسارك من البداية للقيادة</h3>
-            </div>
-            
-            <div class="roadmap">
-                <div class="roadmap-line"></div>
-                
-                <div class="roadmap-cards">
-                    <div class="roadmap-card reveal">
-                        <div class="card-number">01</div>
-                        <h4 class="card-title">متدرب (بونص)</h4>
-                        <p class="card-subtitle">أول 7 أيام فترة بونص استثنائية</p>
-                        <div class="salary-card">
-                            <span class="salary-amount">100 جنيه</span>
-                            <p class="salary-label">عن كل عميل ناجح</p>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-card highlight reveal">
-                        <div class="promotion-badge">ترقية رسمية</div>
-                        <div class="card-number dark">02</div>
-                        <h4 class="card-title">ليدر (Leader)</h4>
-                        <p class="card-subtitle">إدارة فرق التدريب</p>
-                        <div class="salary-card dark">
-                            <span class="salary-amount">6,000 جنيه</span>
-                            <p class="salary-label">راتب ثابت شهرياً</p>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-card reveal">
-                        <div class="card-number green">03</div>
-                        <h4 class="card-title">تيم ليدر (TL)</h4>
-                        <p class="card-subtitle">الرقابة والتقارير</p>
-                        <div class="salary-card green">
-                            <span class="salary-amount">10,000 جنيه</span>
-                            <p class="salary-label">راتب ثابت شهرياً</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="services-content">
-                    <h3 class="services-title">خدمات إضافية للموظفين</h3>
-                    
-                    <div class="services-cards">
-                        <div class="service-card">
-                            <div class="service-icon money">💰</div>
-                            <h5 class="service-title">سلفة من المرتب</h5>
-                            <p class="service-desc">نوفر نظام سلف ميسر للحالات الطارئة بعد أول شهر عمل.</p>
-                        </div>
-                        
-                        <div class="service-card">
-                            <div class="service-icon rocket">🚀</div>
-                            <h5 class="service-title">بونص أول 7 أيام</h5>
-                            <p class="service-desc">فترة بونص ترحيبي بمعدلات إنتاج مضاعفة.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="partners-card">
-                    <h4 class="partners-title">شركاء النجاح</h4>
-                    <ul class="partners-list">
-                        <li class="partner-item">
-                            <span class="partner-number">01</span>
-                            مصانع المنطقة الصناعية بـ 6 أكتوبر
-                        </li>
-                        <li class="partner-item">
-                            <span class="partner-number">02</span>
-                            شركات الشحن الكبرى (أمازون، نون)
-                        </li>
-                        <li class="partner-item">
-                            <span class="partner-number">03</span>
-                            سلاسل مطاعم الوجبات السريعة العالمية
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">R</div>
-                        <span class="footer-logo-text">RTI<span class="logo-highlight">.EG</span></span>
-                    </div>
-                    <p class="footer-description">
-                        المقر الرسمي والوحيد لشركة RTI مصر. حلول متكاملة لتوريد العمالة الماهرة منذ 8 سنوات.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">روابط سريعة</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="apply.html">انضم للفريق</a></li>
-                        <li><a href="status.html">تتبع طلبك</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">الدعم</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://api.whatsapp.com/send?phone=201016839352&text=أهلاً RTI، أود الاستفسار عن خدماتكم" target="_blank">تواصل معنا</a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=201016839352&text=إبلاغ عن مشكلة فنية في موقع RTI" target="_blank">الإبلاغ عن مشكلة</a></li>
-                        <li><a href="terms.html">الشروط والأحكام</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">التوثيق الحكومي</h4>
-                    <div class="certification-box">
-                        <p class="certification-text">
-                            الشركة مسجلة رسمياً وتخضع لرقابة وزارة القوى العاملة المصرية.
-                        </p>
-                        <div class="badges">
-                            <span class="badge certified">Certified EG</span>
-                            <span class="badge verified">Verified Official</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <span>سجل تجاري: 1029384756</span>
-                    <span>بطاقة ضريبية: 998-112-445</span>
-                </div>
-                <p class="copyright">© 2024 RTI.EG. ALL RIGHTS RESERVED.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Settings Modal -->
-    <div class="settings-modal" id="settingsModal">
-        <div class="modal-overlay" onclick="closeSettings()"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">الإعدادات</h2>
-                <button class="modal-close" onclick="closeSettings()">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <!-- Theme Toggle -->
-                <div class="settings-group">
-                    <h3 class="settings-title">المظهر</h3>
-                    <div class="theme-toggle">
-                        <button class="theme-btn" onclick="setTheme('light')" id="lightThemeBtn">
-                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0z"/>
-                            </svg>
-                            نهاري
-                        </button>
-                        <button class="theme-btn active" onclick="setTheme('dark')" id="darkThemeBtn">
-                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-                            </svg>
-                            ليلي
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div class="settings-group">
-                    <h3 class="settings-title">الوصول السريع</h3>
-                    <div class="quick-links">
-                        <a href="apply.html" class="quick-link">
-                            <span>انضم للفريق الآن</span>
-                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
-                            </svg>
-                        </a>
-                        <a href="status.html" class="quick-link">
-                            <span>تتبع طلبك</span>
-                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </a>
-                        <a href="terms.html" class="quick-link">
-                            <span>الشروط والقواعد</span>
-                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Contact -->
-                <div class="settings-group">
-                    <h3 class="settings-title">تواصل سريع</h3>
-                    <div class="contact-links">
-                        <button class="contact-btn whatsapp" onclick="openWhatsApp('أهلاً RTI، أود التواصل معكم بخصوص...')">
-                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.87 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            تواصل معنا
-                        </button>
-                        
-                        <button class="contact-btn report" onclick="openWhatsApp('إبلاغ عن مشكلة فنية في موقع RTI')">
-                            الإبلاغ عن مشكلة فنية
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <p class="version">RTI Platform v4.3</p>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
-        </div>
+<body class="bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900">
+  <!-- Overlay for page loading -->
+  <div id="globalLoader" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-900/80 backdrop-blur-lg">
+    <div class="flex flex-col items-center gap-5 rounded-2xl bg-white/10 glass-effect px-10 py-8 shadow-2xl backdrop-blur-lg bounce-in">
+      <div class="relative">
+        <div class="h-14 w-14 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
+        <div class="absolute inset-0 h-14 w-14 animate-spin rounded-full border-4 border-emerald-300 border-t-transparent opacity-50" style="animation-duration: 2s; animation-direction: reverse;"></div>
+      </div>
+      <p class="text-sm font-semibold text-white">جاري معالجة الطلب...</p>
     </div>
+  </div>
+
+  <!-- Notification for already applied -->
+  <div id="alreadyAppliedNotification" class="fixed top-24 left-4 z-[55] hidden max-w-sm rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 p-4 shadow-2xl ring-1 ring-emerald-400/30 bounce-in">
+    <div class="flex items-start gap-3">
+      <div class="mt-0.5 rounded-full bg-white/20 p-1.5">
+        <i class="fas fa-check-circle text-white text-sm"></i>
+      </div>
+      <div class="flex-1">
+        <p class="text-sm font-bold text-white">تم التقديم مسبقاً!</p>
+        <p class="mt-1 text-xs text-emerald-50">لقد قمت بالتقديم مسبقاً. يمكنك تتبع حالة طلبك من زر "تتبع طلبي".</p>
+      </div>
+      <button onclick="document.getElementById('alreadyAppliedNotification').classList.add('hidden')" class="text-white/80 hover:text-white">
+        <i class="fas fa-times text-sm"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-gradient-to-b from-white/95 to-white/90 backdrop-blur-xl shadow-sm">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <img src="https://i.ibb.co/JRjW9C9m/1000149030.jpg" alt="شعار RTI – EG" class="h-12 w-12 rounded-full border-2 border-white/50 object-cover shadow-md hover-card" />
+          <div class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-white bg-emerald-500"></div>
+        </div>
+        <div class="leading-tight">
+          <p class="text-sm font-bold text-slate-900">RTI – EG</p>
+          <p class="text-[11px] font-medium text-emerald-600">Response To Intervention</p>
+        </div>
+      </div>
+
+      <button id="mobileMenuToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm hover:bg-white hover:shadow-md transition-all duration-300 lg:hidden">
+        <i class="fas fa-bars text-base"></i>
+      </button>
+
+      <nav id="mainNav" class="hidden items-center gap-6 text-sm font-semibold text-slate-700 lg:flex">
+        <a href="#home" class="group relative py-1.5 px-1 hover:text-emerald-600 transition-colors">
+          <i class="fas fa-home mr-1 text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          الرئيسية
+          <span class="absolute -bottom-1 right-0 h-0.5 w-0 bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="group relative py-1.5 px-1 hover:text-emerald-600 transition-colors">
+          <i class="fas fa-building mr-1 text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          عن الشركة
+          <span class="absolute -bottom-1 right-0 h-0.5 w-0 bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 group-hover:w-full"></span>
+        </a>
+        <a href="#jobs" class="group relative py-1.5 px-1 hover:text-emerald-600 transition-colors">
+          <i class="fas fa-briefcase mr-1 text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          الوظائف
+          <span class="absolute -bottom-1 right-0 h-0.5 w-0 bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 group-hover:w-full"></span>
+        </a>
+        <a href="#apply" class="group relative py-1.5 px-1 hover:text-emerald-600 transition-colors">
+          <i class="fas fa-file-signature mr-1 text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          التقديم
+          <span class="absolute -bottom-1 right-0 h-0.5 w-0 bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 group-hover:w-full"></span>
+        </a>
+        <button id="trackApplicationBtn" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-[1.03] transition-all duration-300">
+          <i class="fas fa-search-location text-xs"></i>
+          تتبع طلبي
+        </button>
+      </nav>
+
+      <button id="openApplicationBtnHeader" class="hidden items-center justify-center gap-3 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-3 text-xs font-bold text-white shadow-xl shadow-slate-900/30 hover:shadow-2xl hover:shadow-slate-900/40 hover:scale-[1.03] transition-all duration-300 lg:inline-flex floating-btn">
+        <i class="fas fa-briefcase text-sm"></i>
+        احصل على وظيفة
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="hidden border-t border-white/10 bg-white/95 backdrop-blur-xl px-4 pb-5 pt-4 lg:hidden">
+      <nav class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+        <a href="#home" class="flex items-center gap-3 rounded-xl py-3 px-4 hover:bg-slate-50 hover:text-emerald-600 transition-all duration-300">
+          <i class="fas fa-home text-emerald-500 text-base w-6"></i>
+          الرئيسية
+        </a>
+        <a href="#about" class="flex items-center gap-3 rounded-xl py-3 px-4 hover:bg-slate-50 hover:text-emerald-600 transition-all duration-300">
+          <i class="fas fa-building text-emerald-500 text-base w-6"></i>
+          عن الشركة
+        </a>
+        <a href="#jobs" class="flex items-center gap-3 rounded-xl py-3 px-4 hover:bg-slate-50 hover:text-emerald-600 transition-all duration-300">
+          <i class="fas fa-briefcase text-emerald-500 text-base w-6"></i>
+          الوظائف
+        </a>
+        <a href="#apply" class="flex items-center gap-3 rounded-xl py-3 px-4 hover:bg-slate-50 hover:text-emerald-600 transition-all duration-300">
+          <i class="fas fa-file-signature text-emerald-500 text-base w-6"></i>
+          التقديم
+        </a>
+        <button id="trackApplicationBtnMobile" class="mt-2 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3.5 text-xs font-bold text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-300">
+          <i class="fas fa-search-location text-sm"></i>
+          تتبع طلبي
+        </button>
+      </nav>
+      <button id="openApplicationBtnHeaderMobile" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-3.5 text-xs font-bold text-white shadow-xl shadow-slate-900/30 hover:shadow-2xl hover:shadow-slate-900/40 transition-all duration-300 floating-btn">
+        <i class="fas fa-briefcase text-sm"></i>
+        احصل على وظيفة
+      </button>
+    </div>
+  </header>
+
+  <main class="pt-20 lg:pt-24">
+    <!-- Hero / Landing -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white">
+      <!-- Animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/4 h-60 w-60 rounded-full bg-emerald-400/5 blur-3xl"></div>
+      </div>
+      
+      <div class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 lg:flex-row lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+        <div class="flex-1 space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-slate-100 ring-1 ring-white/20 backdrop-blur-sm hover-card">
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 pulse-glow"></span>
+            <span>شركة مصرية قانونية – دخل من أول يوم</span>
+          </div>
+          <div>
+            <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+              RTI – EG
+              <span class="block text-2xl font-bold text-emerald-300 sm:text-3xl lg:text-4xl mt-2">Response To Intervention</span>
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-100/90 sm:text-lg">
+              شركة متخصصة في الدعاية والإعلان وتوريد العمالة المؤهلة، بنظام واضح وشفاف يضمن لك دخل بدون سقف، وبإشراف إداري مباشر من مقر حقيقي مسجل بالقوى العاملة.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <button id="openApplicationBtnHero" class="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 px-8 py-4 text-sm font-bold text-slate-900 shadow-2xl shadow-emerald-500/30 hover:shadow-3xl hover:shadow-emerald-500/40 hover:scale-[1.03] transition-all duration-300 floating-btn">
+              <i class="fas fa-rocket text-base"></i>
+              احصل على وظيفة
+              <i class="fas fa-arrow-left text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+            </button>
+            <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3.5 text-xs font-medium text-slate-100 backdrop-blur-sm hover:border-emerald-300 hover:text-emerald-200 hover:bg-white/10 hover:scale-[1.03] transition-all duration-300">
+              <i class="fas fa-info-circle text-sm"></i>
+              اعرف أكثر عن RTI – EG
+              <i class="fas fa-arrow-down text-xs opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300"></i>
+            </button>
+          </div>
+          <div class="grid max-w-2xl grid-cols-2 gap-4 text-xs text-slate-100/80 sm:text-sm">
+            <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <p class="text-xs font-semibold text-emerald-300">الدخل</p>
+              <p class="mt-2 font-bold text-white">100 جنيه لكل عميل – بدون حد أقصى</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <p class="text-xs font-semibold text-emerald-300">الضمانات</p>
+              <p class="mt-2 font-bold text-white">مقر رسمي + عقود حقيقية + فريق +80 موظف</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1">
+          <div class="mx-auto max-w-md rounded-3xl bg-white/95 p-5 text-slate-900 shadow-2xl shadow-emerald-500/20 ring-1 ring-white/20 backdrop-blur-sm hover-card">
+            <img 
+              src="https://i.ibb.co/tpgHrBLr/1000148897.png" 
+              alt="استمارة التقديم الأونلاين RTI – EG" 
+              class="mb-4 h-48 w-full rounded-2xl object-cover cursor-pointer hover:opacity-95 transition-all duration-300 shadow-md" 
+              id="applicationImage"
+            />
+            <h2 class="mb-2 text-lg font-black text-slate-900">استمارة التقديم الأونلاين – 200 جنيه</h2>
+            <p class="text-xs leading-relaxed text-slate-600">
+              التقديم الأونلاين معتمد ورسمي، برسوم 200 جنيه غير قابلة للاسترداد، يشمل مراجعة بياناتك والتواصل معك لتحديد الخطوات التالية.
+            </p>
+            <button id="openApplicationBtnCard" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-[1.02] transition-all duration-300">
+              <i class="fas fa-file-import text-sm"></i>
+              قدم أونلاين الآن
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="mx-auto max-w-6xl px-4 py-16 lg:px-8 lg:py-20">
+      <div class="section-animate">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-black text-slate-900 sm:text-4xl">عن شركة <span class="gradient-text">RTI – EG</span></h2>
+          <p class="mt-3 text-sm font-medium text-emerald-600">Response To Intervention – شركة مصرية قانونية</p>
+          <div class="mt-6 h-1 w-20 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
+        </div>
+        
+        <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+          <div>
+            <p class="text-base leading-relaxed text-slate-700">
+              RTI – EG شركة مصرية قانونية متخصصة في الدعاية والإعلان وتوريد العمالة المؤهلة والتسويق الوظيفي، تعمل من خلال مقر رسمي وهيكل إداري واضح وإشراف مباشر، وتمتلك سجلًا تجاريًا وبطاقة ضريبية، ومسجلة رسميًا لدى القوى العاملة.
+            </p>
+
+            <div class="mt-8 grid gap-5 md:grid-cols-2">
+              <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+                <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                  <i class="fas fa-industry text-emerald-600 text-lg"></i>
+                </div>
+                <h3 class="text-base font-black text-slate-900">مجالات العمل</h3>
+                <ul class="mt-3 list-disc space-y-2 pr-5 text-sm text-slate-700">
+                  <li>توريد العمالة المؤهلة (مصانع – مخازن – فنادق – مطاعم – شركات – كمباوندات).</li>
+                  <li>الدعاية والإعلان.</li>
+                  <li>التسويق الوظيفي، التصفية والمتابعة.</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+                <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                  <i class="fas fa-lightbulb text-emerald-600 text-lg"></i>
+                </div>
+                <h3 class="text-base font-black text-slate-900">فلسفة العمل</h3>
+                <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                  فلسفة الشركة بسيطة وواضحة: زيادة عدد موظفي HR تعني سرعة تعاقدات أكبر، وبالتالي دخل أعلى للجميع. فترة التدريب في RTI – EG لا تهدف للربح، بل للتأهيل فقط.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <div class="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-white shadow-xl hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
+                <i class="fas fa-star text-emerald-300 text-lg"></i>
+              </div>
+              <h3 class="text-base font-black">لماذا RTI – EG؟</h3>
+              <ul class="mt-3 list-disc space-y-2 pr-5 text-sm text-slate-100/90">
+                <li>مقر حقيقي موثق على Google Maps.</li>
+                <li>هيكل إداري وإشراف مباشر على فريق HR.</li>
+                <li>جروب فيسبوك يضم أكثر من 80 موظفًا حاليًا.</li>
+                <li>تعاقدات حقيقية مع شركات ومؤسسات مختلفة.</li>
+                <li>دخل ثابت ومتغير من أول يوم بعد اجتياز التدريب.</li>
+              </ul>
+            </div>
+            
+            <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                <i class="fas fa-file-contract text-emerald-600 text-lg"></i>
+              </div>
+              <h3 class="text-base font-black text-slate-900">نظام التقديم</h3>
+              <ul class="mt-3 list-disc space-y-2 pr-5 text-sm text-slate-700">
+                <li>من مقر الشركة: <span class="font-bold text-emerald-600">مجاني</span>.</li>
+                <li>أونلاين: <span class="font-bold text-emerald-600">200 جنيه</span> (غير قابلة للاسترداد).</li>
+                <li>التقديم الأونلاين يتم حصريًا عبر مستر مراد.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section id="jobs" class="bg-gradient-to-b from-slate-50 to-white py-16 lg:py-20">
+      <div class="mx-auto max-w-6xl px-4 lg:px-8">
+        <div class="section-animate">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-slate-900 sm:text-4xl">تفاصيل وظيفة <span class="gradient-text">HR (توظيف وتسويق)</span></h2>
+            <div class="mt-6 h-1 w-20 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
+          </div>
+          
+          <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+            <div>
+              <p class="text-base leading-relaxed text-slate-700">
+                الوظيفة الأساسية في RTI – EG هي <span class="font-bold text-emerald-600">HR (توظيف وتسويق)</span>، ومسؤولياتها تشمل:
+              </p>
+              <ul class="mt-4 list-disc space-y-2 pr-5 text-base text-slate-700">
+                <li>نشر الإعلانات على المنصات المختلفة.</li>
+                <li>التواصل مع العملاء والمهتمين بالفرص المتاحة.</li>
+                <li>شرح نظام العمل وطريقة التقديم.</li>
+                <li>العمل تحت إشراف مباشر من إدارة الشركة.</li>
+              </ul>
+
+              <div class="mt-8 grid gap-5 md:grid-cols-2">
+                <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+                  <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                    <i class="fas fa-bullseye text-emerald-600 text-lg"></i>
+                  </div>
+                  <h3 class="text-base font-black text-slate-900">نظام التارجت</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                    <span class="font-bold">فترة التدريب:</span> هدفها الوصول إلى <span class="font-bold">20 عميل</span>، بدون استفادة مادية للشركة في هذه الفترة.
+                  </p>
+                </div>
+                <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+                  <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                    <i class="fas fa-money-bill-wave text-emerald-600 text-lg"></i>
+                  </div>
+                  <h3 class="text-base font-black text-slate-900">المرتبات والدخل</h3>
+                  <p class="mt-3 text-sm text-slate-700">
+                    <span class="font-bold text-emerald-600">100 جنيه</span> عن كل عميل، بدون حد أقصى لعدد العملاء.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <div class="rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 p-5 text-white shadow-xl hover-card">
+                <div class="mb-4 inline-flex items-center justify-center rounded-full bg-white/20 p-3">
+                  <i class="fas fa-gift text-white text-lg"></i>
+                </div>
+                <h3 class="text-base font-black">البونص (الأسبوع الأول فقط)</h3>
+                <ul class="mt-3 list-disc space-y-2 pr-5 text-sm text-emerald-50">
+                  <li>3 عملاء في يوم واحد = <span class="font-bold">200 جنيه</span>.</li>
+                  <li>5 عملاء في يوم واحد = <span class="font-bold">300 جنيه</span>.</li>
+                  <li>يصل البونص حتى <span class="font-bold">800 جنيه</span>، ويُصرف في نفس اليوم.</li>
+                </ul>
+              </div>
+              <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
+                <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                  <i class="fas fa-chart-line text-emerald-600 text-lg"></i>
+                </div>
+                <h3 class="text-base font-black text-slate-900">الترقيات</h3>
+                <p class="mt-3 text-sm text-slate-700">
+                  عند الوصول إلى <span class="font-bold text-emerald-600">30 عميل شهريًا</span>، يتم ترقيتك إلى <span class="font-bold">مساعد ليدر / ليدر</span>.
+                </p>
+                <p class="mt-2 text-sm text-slate-700">
+                  مرتب الليدر يتراوح بين <span class="font-bold">2000 – 5000 جنيه</span>، بالإضافة إلى مزايا أخرى.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantees & Income -->
+    <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 lg:py-20">
+      <div class="mx-auto max-w-6xl px-4 lg:px-8">
+        <div class="section-animate">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-black sm:text-4xl">الضمانات والمصداقية</h2>
+            <p class="mt-3 text-base leading-relaxed text-slate-100/90 max-w-3xl mx-auto">
+              RTI – EG ليست عملًا فرديًا أو نشاطًا غير واضح، بل شركة مصرية قانونية لها وجود حقيقي وضمانات واضحة لكل من ينضم لفريقها.
+            </p>
+            <div class="mt-6 h-1 w-20 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
+          </div>
+          
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
+                <i class="fas fa-map-marker-alt text-emerald-300 text-lg"></i>
+              </div>
+              <h3 class="text-sm font-black">مقر رسمي موثق</h3>
+              <p class="mt-2 text-xs text-slate-200">
+                المقر موجود فعليًا، ويمكنك الوصول إليه بسهولة عبر Google Maps.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
+                <i class="fas fa-file-contract text-emerald-300 text-lg"></i>
+              </div>
+              <h3 class="text-sm font-black">مستندات قانونية</h3>
+              <p class="mt-2 text-xs text-slate-200">
+                الشركة تمتلك سجلًا تجاريًا وبطاقة ضريبية ومسجلة بالقوى العاملة.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
+                <i class="fas fa-users text-emerald-300 text-lg"></i>
+              </div>
+              <h3 class="text-sm font-black">فريق حقيقي</h3>
+              <p class="mt-2 text-xs text-slate-200">
+                جروب فيسبوك يضم أكثر من 80 موظفًا من فريق RTI – EG.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
+                <i class="fas fa-money-bill-trend-up text-emerald-300 text-lg"></i>
+              </div>
+              <h3 class="text-sm font-black">دخل من أول يوم</h3>
+              <p class="mt-2 text-xs text-slate-200">
+                بعد فترة التدريب وتحقيق التارجت، تبدأ في تحقيق دخل من أول يوم.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apply CTA section -->
+    <section id="apply" class="mx-auto max-w-6xl px-4 py-16 lg:px-8 lg:py-20">
+      <div class="section-animate">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-black text-slate-900 sm:text-4xl">نظام التقديم والرسوم</h2>
+          <div class="mt-6 h-1 w-20 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
+        </div>
+        
+        <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+          <div>
+            <p class="text-base leading-relaxed text-slate-700">
+              يمكنك التقديم على وظيفة HR في RTI – EG بطريقتين:
+            </p>
+            <ul class="mt-4 list-disc space-y-2 pr-5 text-base text-slate-700">
+              <li><span class="font-bold text-emerald-600">من مقر الشركة:</span> التقديم مجاني بالكامل.</li>
+              <li><span class="font-bold text-emerald-600">أونلاين:</span> برسوم <span class="font-bold">200 جنيه</span> غير قابلة للاسترداد.</li>
+            </ul>
+            <p class="mt-4 text-base leading-relaxed text-slate-700">
+              التقديم الأونلاين يتم حصريًا عبر <span class="font-bold text-emerald-600">مستر مراد</span>، ويتم حفظ بياناتك ومستنداتك بأمان.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <button id="openApplicationBtnApply" class="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 px-8 py-4 text-sm font-bold text-white shadow-2xl shadow-emerald-600/30 hover:shadow-3xl hover:shadow-emerald-600/40 hover:scale-[1.03] transition-all duration-300 floating-btn">
+                <i class="fas fa-briefcase text-base"></i>
+                احصل على وظيفة
+                <i class="fas fa-arrow-left text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+              </button>
+              <p class="text-xs text-slate-500 max-w-xs">يتم فتح استمارة التقديم مباشرة بدون الانتقال لصفحة جديدة.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-xl ring-1 ring-slate-100/50 hover-card">
+            <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+              <i class="fas fa-map-marker-alt text-emerald-600 text-lg"></i>
+            </div>
+            <h3 class="text-base font-black text-slate-900">بيانات المقر الرسمي</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-map-pin text-emerald-500 mt-1 text-xs"></i>
+                <span><span class="font-bold">العنوان:</span> شارع مؤسسة الزكاة – أمام الكوبري الجديد – سنتر شاهين – بن الصقر.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-subway text-emerald-500 mt-1 text-xs"></i>
+                <span><span class="font-bold">أقرب مترو:</span> عزبة النخل.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-clock text-emerald-500 mt-1 text-xs"></i>
+                <span><span class="font-bold">مواعيد العمل:</span> من 11 صباحًا حتى 4 عصرًا.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fab fa-facebook text-emerald-500 mt-1 text-xs"></i>
+                <span><span class="font-bold">Facebook:</span> <a href="https://www.facebook.com/share/17ukB4CxLa/" target="_blank" class="text-emerald-700 hover:underline font-bold">الصفحة الرسمية</a></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-map-marked-alt text-emerald-500 mt-1 text-xs"></i>
+                <span><span class="font-bold">Google Maps:</span> <a href="https://maps.app.goo.gl/GGupR68yf2t3WvdJ8" target="_blank" class="text-emerald-700 hover:underline font-bold">افتح الموقع على الخريطة</a></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/50 bg-gradient-to-b from-white to-slate-50 pt-12 pb-8">
+    <div class="mx-auto max-w-6xl px-4 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <div class="section-animate">
+          <div class="flex items-center gap-3 mb-6">
+            <img src="https://i.ibb.co/JRjW9C9m/1000149030.jpg" alt="شعار RTI – EG" class="h-12 w-12 rounded-full border-2 border-white object-cover shadow-md" />
+            <div class="leading-tight">
+              <p class="text-sm font-black text-slate-900">RTI – EG</p>
+              <p class="text-[11px] font-medium text-emerald-600">Response To Intervention</p>
+            </div>
+          </div>
+          
+          <h3 class="text-sm font-black text-slate-900 mb-3">مقر RTI – EG</h3>
+          <p class="text-sm text-slate-700">
+            شارع مؤسسة الزكاة – أمام الكوبري الجديد – سنتر شاهين – بن الصقر – مترو عزبة النخل.
+          </p>
+          <p class="mt-2 text-xs text-slate-600">مواعيد العمل: من 11 صباحًا حتى 4 عصرًا.</p>
+          
+          <div class="mt-6 flex flex-wrap items-center gap-3 text-xs text-slate-600">
+            <a href="https://www.facebook.com/share/17ukB4CxLa/" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-2 text-[11px] font-bold text-white hover:shadow-md transition-all duration-300">
+              <i class="fab fa-facebook-f text-xs"></i>
+              صفحة فيسبوك الرسمية
+            </a>
+            <a href="https://maps.app.goo.gl/GGupR68yf2t3WvdJ8" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-[11px] font-bold text-slate-800 hover:shadow-md transition-all duration-300">
+              <i class="fas fa-map-marked-alt text-xs"></i>
+              فتح الموقع على Google Maps
+            </a>
+          </div>
+          
+          <p class="mt-8 text-[11px] text-slate-500">
+            © <span id="currentYear"></span> RTI – EG – Response To Intervention. جميع الحقوق محفوظة.
+          </p>
+        </div>
+        
+        <div class="section-animate">
+          <h3 class="text-sm font-black text-slate-900 mb-4">روابط سريعة</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="#home" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300">
+              <i class="fas fa-home text-emerald-500 mr-2"></i>
+              الرئيسية
+            </a>
+            <a href="#about" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300">
+              <i class="fas fa-building text-emerald-500 mr-2"></i>
+              عن الشركة
+            </a>
+            <a href="#jobs" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300">
+              <i class="fas fa-briefcase text-emerald-500 mr-2"></i>
+              الوظائف
+            </a>
+            <a href="#apply" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300">
+              <i class="fas fa-file-signature text-emerald-500 mr-2"></i>
+              التقديم
+            </a>
+            <button onclick="openTrackModal()" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300 text-right">
+              <i class="fas fa-search-location text-emerald-500 mr-2"></i>
+              تتبع طلبي
+            </button>
+            <button onclick="openApplicationModal()" class="rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 p-3 text-xs font-bold text-emerald-700 hover:bg-emerald-100 hover:text-emerald-800 transition-all duration-300 text-right">
+              <i class="fas fa-briefcase text-emerald-600 mr-2"></i>
+              احصل على وظيفة
+            </button>
+          </div>
+          
+          <div class="mt-8 rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 p-4">
+            <h4 class="text-xs font-black text-emerald-800 mb-2">للتواصل السريع</h4>
+            <p class="text-xs text-emerald-700">
+              للاستفسارات أو المساعدة في التقديم، يمكنك زيارة مقر الشركة خلال أوقات العمل أو التواصل عبر صفحة الفيسبوك.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Modal -->
+  <div id="applicationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/80 p-4 backdrop-blur-lg">
+    <div class="relative max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <!-- Confetti effect container -->
+      <div id="confettiContainer" class="absolute inset-0 pointer-events-none z-10 overflow-hidden hidden"></div>
+      
+      <div class="flex items-center justify-between border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white px-6 py-4">
+        <div>
+          <p class="text-sm font-black text-slate-900">استمارة التقديم – RTI – EG</p>
+          <p class="text-[11px] text-slate-500">املأ البيانات بدقة، جميع الحقول مطلوبة.</p>
+        </div>
+        <button id="closeApplicationModal" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-600 hover:bg-slate-100 transition-all duration-300 hover:scale-110">✕</button>
+      </div>
+
+      <div class="max-h-[70vh] overflow-y-auto px-6 py-5 text-sm">
+        <!-- Step indicator -->
+        <div class="mb-6 flex items-center justify-between gap-2">
+          <div class="flex flex-1 items-center gap-2">
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-black text-white shadow-md" data-step="1">1</div>
+            <div class="h-1.5 flex-1 bg-emerald-500 progress-bar"></div>
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm" data-step="2">2</div>
+            <div class="h-1.5 flex-1 bg-slate-200"></div>
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm" data-step="3">3</div>
+          </div>
+        </div>
+
+        <form id="applicationForm" class="space-y-7">
+          <!-- Step 1: Personal info -->
+          <div class="form-step space-y-5" data-step="1">
+            <h3 class="text-sm font-black text-slate-900">الخطوة 1 – البيانات الشخصية</h3>
+            <div>
+              <label class="mb-2 block text-xs font-bold text-slate-700" for="fullName">الاسم الثلاثي</label>
+              <input id="fullName" type="text" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" placeholder="اكتب اسمك ثلاثي بالكامل" />
+            </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-xs font-bold text-slate-700" for="age">السن</label>
+                <input id="age" type="number" min="10" max="70" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" />
+              </div>
+              <div>
+                <label class="mb-2 block text-xs font-bold text-slate-700" for="phone">رقم الهاتف</label>
+                <input id="phone" type="tel" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" placeholder="مثال: 010xxxxxxxx" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Address -->
+          <div class="form-step hidden space-y-5" data-step="2">
+            <h3 class="text-sm font-black text-slate-900">الخطوة 2 – العنوان</h3>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-xs font-bold text-slate-700" for="governorate">المحافظة</label>
+                <input id="governorate" type="text" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" />
+              </div>
+              <div>
+                <label class="mb-2 block text-xs font-bold text-slate-700" for="city">المدينة</label>
+                <input id="city" type="text" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" />
+              </div>
+            </div>
+            <div>
+              <label class="mb-2 block text-xs font-bold text-slate-700" for="documentType">نوع المستند الرسمي</label>
+              <div class="mt-3 flex items-center gap-4">
+                <label class="flex flex-1 items-center justify-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-white p-4 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50">
+                  <input type="radio" name="documentType" value="id" class="h-5 w-5 text-emerald-600" checked />
+                  <div>
+                    <p class="text-sm font-bold text-slate-800">بطاقة شخصية</p>
+                    <p class="text-xs text-slate-600 mt-1">يجب رفع وجهين</p>
+                  </div>
+                </label>
+                <label class="flex flex-1 items-center justify-center gap-3 cursor-pointer rounded-xl border border-slate-300 bg-white p-4 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50">
+                  <input type="radio" name="documentType" value="birth" class="h-5 w-5 text-emerald-600" />
+                  <div>
+                    <p class="text-sm font-bold text-slate-800">شهادة ميلاد</p>
+                    <p class="text-xs text-slate-600 mt-1">صورة واحدة</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Documents -->
+          <div class="form-step hidden space-y-5" data-step="3">
+            <h3 class="text-sm font-black text-slate-900">الخطوة 3 – رفع المستندات</h3>
+            <p class="text-xs text-slate-600">الرجاء التأكد من وضوح الصور وجودتها قبل الرفع.</p>
+
+            <div class="space-y-5" id="idCardUploads">
+              <div class="space-y-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-4 hover:border-emerald-500 transition-all duration-300">
+                <p class="text-xs font-bold text-slate-800">صورة البطاقة – الوجه الأمامي</p>
+                <input id="idFrontInput" type="file" accept="image/*" class="block w-full text-xs text-slate-700" />
+                <div class="flex items-center justify-between text-[11px] text-slate-500 upload-status">
+                  <span id="idFrontStatus">لم يتم الرفع بعد</span>
+                  <span id="idFrontIcon" class="text-slate-400">⬆️</span>
+                </div>
+              </div>
+              <div class="space-y-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-4 hover:border-emerald-500 transition-all duration-300">
+                <p class="text-xs font-bold text-slate-800">صورة البطاقة – الوجه الخلفي</p>
+                <input id="idBackInput" type="file" accept="image/*" class="block w-full text-xs text-slate-700" />
+                <div class="flex items-center justify-between text-[11px] text-slate-500 upload-status">
+                  <span id="idBackStatus">لم يتم الرفع بعد</span>
+                  <span id="idBackIcon" class="text-slate-400">⬆️</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-5 hidden" id="birthCertificateUpload">
+              <div class="space-y-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-4 hover:border-emerald-500 transition-all duration-300">
+                <p class="text-xs font-bold text-slate-800">صورة شهادة الميلاد</p>
+                <input id="birthCertInput" type="file" accept="image/*" class="block w-full text-xs text-slate-700" />
+                <div class="flex items-center justify-between text-[11px] text-slate-500 upload-status">
+                  <span id="birthCertStatus">لم يتم الرفع بعد</span>
+                  <span id="birthCertIcon" class="text-slate-400">⬆️</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <div class="space-y-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-4 hover:border-emerald-500 transition-all duration-300">
+                <p class="text-xs font-bold text-slate-800">صورة شخصية حديثة</p>
+                <input id="personalPhotoInput" type="file" accept="image/*" class="block w-full text-xs text-slate-700" />
+                <div class="flex items-center justify-between text-[11px] text-slate-500 upload-status">
+                  <span id="personalPhotoStatus">لم يتم الرفع بعد</span>
+                  <span id="personalPhotoIcon" class="text-slate-400">⬆️</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 rounded-xl bg-gradient-to-r from-amber-50 to-amber-100 px-4 py-3 text-[11px] text-amber-800 ring-1 ring-amber-200">
+              <span class="font-bold">ملحوظة:</span> لا يمكن إرسال الاستمارة قبل رفع جميع الصور بنجاح.
+            </div>
+          </div>
+
+          <!-- Step 4: Confirm -->
+          <div class="form-step hidden space-y-5" data-step="4">
+            <h3 class="text-sm font-black text-slate-900">الخطوة 4 – تأكيد وإرسال</h3>
+            <p class="text-sm text-slate-700">
+              برجاء مراجعة بياناتك قبل الإرسال. بالضغط على زر <span class="font-bold text-emerald-600">"تقديم طلب"</span> سيتم تسجيل طلبك في قاعدة بيانات الشركة.
+            </p>
+            <p class="mt-2 text-xs text-slate-500">بعد الإرسال ستظهر لك رسالة تأكيد، وسيتم التواصل معك عبر رقم الهاتف المسجل.</p>
+            <div id="formMessage" class="hidden rounded-xl px-4 py-3 text-xs"></div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer buttons -->
+      <div class="flex items-center justify-between border-t border-slate-200 bg-gradient-to-r from-slate-50 to-white px-6 py-4 text-xs">
+        <button id="prevStepBtn" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-all duration-300 hover:scale-[1.02]" disabled>
+          <i class="fas fa-arrow-right text-xs"></i>
+          رجوع
+        </button>
+        <div class="flex items-center gap-3">
+          <button id="nextStepBtn" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-[1.03] transition-all duration-300">
+            التالي
+            <i class="fas fa-arrow-left text-xs"></i>
+          </button>
+          <button id="submitApplicationBtn" class="hidden items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40 hover:scale-[1.03] transition-all duration-300">
+            <i class="fas fa-paper-plane text-xs"></i>
+            تقديم طلب
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Zoom Modal -->
+  <div id="imageZoomModal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-slate-900/90 p-4 backdrop-blur-lg">
+    <div class="relative max-h-[90vh] max-w-3xl rounded-3xl bg-white shadow-3xl image-modal-content">
+      <button id="closeImageModal" class="absolute left-5 top-5 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-600 hover:bg-white transition-all duration-300 hover:scale-110">
+        ✕
+      </button>
+      <img 
+        src="https://i.ibb.co/tpgHrBLr/1000148897.png" 
+        alt="استمارة التقديم الأونلاين RTI – EG مكبرة" 
+        class="h-auto w-full rounded-3xl object-contain max-h-[85vh]"
+      />
+    </div>
+  </div>
+
+  <!-- Track Application Modal -->
+  <div id="trackApplicationModal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-slate-900/80 p-4 backdrop-blur-lg">
+    <div class="relative max-h-[90vh] w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white px-6 py-4">
+        <div>
+          <p class="text-sm font-black text-slate-900">تتبع حالة طلبك</p>
+          <p class="text-[11px] text-slate-500">أدخل رقم الهاتف المسجل للتحقق من حالة طلبك.</p>
+        </div>
+        <button id="closeTrackModal" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-600 hover:bg-slate-100 transition-all duration-300 hover:scale-110">✕</button>
+      </div>
+
+      <div class="px-6 py-6 text-sm">
+        <div class="space-y-5">
+          <div>
+            <label class="mb-2 block text-xs font-bold text-slate-700" for="trackPhone">رقم الهاتف المسجل</label>
+            <input 
+              id="trackPhone" 
+              type="tel" 
+              class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" 
+              placeholder="أدخل رقم الهاتف الذي قدمت به"
+            />
+          </div>
+          
+          <button id="checkStatusBtn" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 px-4 py-3.5 text-xs font-bold text-white shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40 hover:scale-[1.02] transition-all duration-300">
+            <i class="fas fa-search text-xs"></i>
+            تحقق من حالة الطلب
+          </button>
+        </div>
+
+        <!-- نتائج البحث ستظهر هنا -->
+        <div id="trackResults" class="mt-6 hidden space-y-4">
+          <h3 class="text-sm font-black text-slate-900">نتائج البحث:</h3>
+          
+          <div id="applicationsList" class="space-y-4 max-h-60 overflow-y-auto">
+            <!-- سيتم إضافة التطبيقات هنا ديناميكيًا -->
+          </div>
+          
+          <div id="noResults" class="hidden rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 p-5 text-center">
+            <div class="mb-3 inline-flex items-center justify-center rounded-full bg-slate-200 p-3">
+              <i class="fas fa-search text-slate-400 text-base"></i>
+            </div>
+            <p class="text-sm font-medium text-slate-700">لم يتم العثور على أي طلبات بهذا الرقم.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script>
+    // Initialize Firebase using provided config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAX8O7jMPikO13-2LWLkdBZ_96QKeuLIt0",
+      authDomain: "kimo-pro-29933.firebaseapp.com",
+      databaseURL: "https://kimo-pro-29933-default-rtdb.firebaseio.com",
+      projectId: "kimo-pro-29933",
+      storageBucket: "kimo-pro-29933.appspot.com",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // imgbb API key
+    const imgbbApiKey = "a358cd5264f543deb8d3aab71c576b47";
+
+    const body = document.body;
+    const applicationModal = document.getElementById("applicationModal");
+    const imageZoomModal = document.getElementById("imageZoomModal");
+    const trackApplicationModal = document.getElementById("trackApplicationModal");
+    const globalLoader = document.getElementById("globalLoader");
+    const alreadyAppliedNotification = document.getElementById("alreadyAppliedNotification");
+    const confettiContainer = document.getElementById("confettiContainer");
+
+    // التحقق من وجود بيانات التقديم في localStorage
+    function checkIfAlreadyApplied() {
+      const savedPhone = localStorage.getItem('rti_application_phone');
+      const savedName = localStorage.getItem('rti_application_name');
+      
+      if (savedPhone && savedName) {
+        return { phone: savedPhone, name: savedName };
+      }
+      return null;
+    }
+
+    // عرض إشعار إذا كان المستخدم قد قدم مسبقاً
+    function showAlreadyAppliedNotification() {
+      const applicationData = checkIfAlreadyApplied();
+      if (applicationData) {
+        setTimeout(() => {
+          alreadyAppliedNotification.classList.remove('hidden');
+          // إخفاء الإشعار بعد 5 ثواني
+          setTimeout(() => {
+            alreadyAppliedNotification.classList.add('hidden');
+          }, 5000);
+        }, 1000);
+      }
+    }
+
+    // دالة لإنشاء تأثير الكونفيتي
+    function createConfettiEffect() {
+      confettiContainer.innerHTML = '';
+      confettiContainer.classList.remove('hidden');
+      
+      const colors = ['#10b981', '#34d399', '#0ea5e9', '#8b5cf6', '#f59e0b'];
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'absolute';
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-20px';
+        confetti.style.animation = `confetti ${Math.random() * 3 + 2}s linear forwards`;
+        confetti.style.opacity = '0.8';
+        
+        confettiContainer.appendChild(confetti);
+      }
+      
+      // إخفاء الكونفيتي بعد 3 ثوان
+      setTimeout(() => {
+        confettiContainer.classList.add('hidden');
+        confettiContainer.innerHTML = '';
+      }, 3000);
+    }
+
+    // ==================== إدارة النوافذ المنبثقة ====================
+    
+    // Buttons opening application modal
+    const openButtonsIds = [
+      "openApplicationBtnHeader",
+      "openApplicationBtnHeaderMobile",
+      "openApplicationBtnHero",
+      "openApplicationBtnCard",
+      "openApplicationBtnApply",
+    ];
+
+    openButtonsIds.forEach((id) => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener("click", () => {
+          // التحقق إذا كان المستخدم قد قدم مسبقاً
+          const applicationData = checkIfAlreadyApplied();
+          if (applicationData) {
+            // إذا كان قد قدم مسبقاً، نفتح نافذة تتبع الطلب بدلاً من استمارة جديدة
+            openTrackModal();
+            // عرض رسالة توضيحية
+            setTimeout(() => {
+              const trackPhoneInput = document.getElementById("trackPhone");
+              if (trackPhoneInput) {
+                trackPhoneInput.value = applicationData.phone;
+                // تشغيل البحث التلقائي
+                setTimeout(() => {
+                  document.getElementById("checkStatusBtn").click();
+                }, 500);
+              }
+            }, 300);
+          } else {
+            // إذا لم يقدم مسبقاً، نفتح استمارة التقديم
+            openApplicationModal();
+          }
+        });
+      }
+    });
+
+    // زر تتبع الطلب
+    document.getElementById("trackApplicationBtn").addEventListener("click", () => openTrackModal());
+    document.getElementById("trackApplicationBtnMobile").addEventListener("click", () => openTrackModal());
+    
+    // زر تكبير صورة الاستمارة
+    document.getElementById("applicationImage").addEventListener("click", () => openImageModal());
+
+    // إغلاق النوافذ
+    document.getElementById("closeApplicationModal").addEventListener("click", closeApplicationModal);
+    document.getElementById("closeImageModal").addEventListener("click", closeImageModal);
+    document.getElementById("closeTrackModal").addEventListener("click", closeTrackModal);
+
+    function openApplicationModal() {
+      applicationModal.classList.remove("hidden");
+      applicationModal.classList.add("flex");
+      body.classList.add("modal-open");
+      // Reset to step 1 each time
+      currentStep = 1;
+      updateStepsUI();
+      resetForm();
+    }
+
+    function closeApplicationModal() {
+      applicationModal.classList.add("hidden");
+      applicationModal.classList.remove("flex");
+      body.classList.remove("modal-open");
+    }
+
+    function openImageModal() {
+      imageZoomModal.classList.remove("hidden");
+      imageZoomModal.classList.add("flex");
+      body.classList.add("modal-open");
+    }
+
+    function closeImageModal() {
+      imageZoomModal.classList.add("hidden");
+      imageZoomModal.classList.remove("flex");
+      body.classList.remove("modal-open");
+    }
+
+    function openTrackModal() {
+      trackApplicationModal.classList.remove("hidden");
+      trackApplicationModal.classList.add("flex");
+      body.classList.add("modal-open");
+      // Reset track results
+      document.getElementById("trackResults").classList.add("hidden");
+      document.getElementById("applicationsList").innerHTML = "";
+      document.getElementById("noResults").classList.add("hidden");
+      document.getElementById("trackPhone").value = "";
+    }
+
+    function closeTrackModal() {
+      trackApplicationModal.classList.add("hidden");
+      trackApplicationModal.classList.remove("flex");
+      body.classList.remove("modal-open");
+    }
+
+    // Close modals on background click
+    [applicationModal, imageZoomModal, trackApplicationModal].forEach(modal => {
+      if (modal) {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            if (modal === applicationModal) closeApplicationModal();
+            if (modal === imageZoomModal) closeImageModal();
+            if (modal === trackApplicationModal) closeTrackModal();
+          }
+        });
+      }
+    });
+
+    // ==================== إدارة القائمة المتنقلة ====================
+    
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    if (mobileMenuToggle && mobileNav) {
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileNav.classList.toggle("hidden");
+      });
+      mobileNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.classList.add("hidden");
+        });
+      });
+    }
+
+    // ==================== وظائف عامة ====================
+    
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+        if (targetId && targetId.startsWith("#")) {
+          const el = document.querySelector(targetId);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    });
+
+    // Year in footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // ==================== إدارة نوع المستند ====================
+    
+    const documentTypeRadios = document.querySelectorAll('input[name="documentType"]');
+    const idCardUploads = document.getElementById("idCardUploads");
+    const birthCertificateUpload = document.getElementById("birthCertificateUpload");
+    
+    documentTypeRadios.forEach(radio => {
+      radio.addEventListener("change", function() {
+        if (this.value === "id") {
+          idCardUploads.classList.remove("hidden");
+          birthCertificateUpload.classList.add("hidden");
+        } else {
+          idCardUploads.classList.add("hidden");
+          birthCertificateUpload.classList.remove("hidden");
+        }
+      });
+    });
+
+    // ==================== إدارة استمارة التقديم ====================
+    
+    let currentStep = 1;
+    const maxStep = 4;
+
+    const prevStepBtn = document.getElementById("prevStepBtn");
+    const nextStepBtn = document.getElementById("nextStepBtn");
+    const submitApplicationBtn = document.getElementById("submitApplicationBtn");
+    const formMessage = document.getElementById("formMessage");
+
+    prevStepBtn.addEventListener("click", () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepsUI();
+      }
+    });
+
+    nextStepBtn.addEventListener("click", () => {
+      if (currentStep < maxStep) {
+        if (validateCurrentStep()) {
+          currentStep++;
+          updateStepsUI();
+        }
+      }
+    });
+
+    submitApplicationBtn.addEventListener("click", handleSubmit);
+
+    function updateStepsUI() {
+      // Show/hide steps
+      document.querySelectorAll(".form-step").forEach((stepEl) => {
+        const stepNum = Number(stepEl.getAttribute("data-step"));
+        if (stepNum === currentStep) {
+          stepEl.classList.remove("hidden");
+        } else {
+          stepEl.classList.add("hidden");
+        }
+      });
+
+      // Update indicators
+      document.querySelectorAll(".step-indicator").forEach((ind) => {
+        const stepNum = Number(ind.getAttribute("data-step"));
+        if (stepNum < currentStep) {
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-black text-white shadow-md";
+        } else if (stepNum === currentStep) {
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-white text-xs font-black text-emerald-700 shadow-sm";
+        } else {
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm";
+        }
+      });
+
+      // Buttons states
+      prevStepBtn.disabled = currentStep === 1;
+      if (currentStep === maxStep) {
+        nextStepBtn.classList.add("hidden");
+        submitApplicationBtn.classList.remove("hidden");
+      } else {
+        nextStepBtn.classList.remove("hidden");
+        submitApplicationBtn.classList.add("hidden");
+      }
+
+      // Reset message on step change
+      if (formMessage) {
+        formMessage.classList.add("hidden");
+        formMessage.textContent = "";
+      }
+    }
+
+    function validateCurrentStep() {
+      let valid = true;
+
+      const addErrorStyle = (el) => {
+        if (!el) return;
+        el.classList.add("border-red-400", "ring-2", "ring-red-100");
+      };
+      const clearErrorStyle = (el) => {
+        if (!el) return;
+        el.classList.remove("border-red-400", "ring-2", "ring-red-100");
+      };
+
+      if (currentStep === 1) {
+        const fullName = document.getElementById("fullName");
+        const age = document.getElementById("age");
+        const phone = document.getElementById("phone");
+
+        [fullName, age, phone].forEach(clearErrorStyle);
+
+        if (!fullName.value.trim()) { addErrorStyle(fullName); valid = false; }
+        if (!age.value || Number(age.value) < 10) { addErrorStyle(age); valid = false; }
+        if (!phone.value.trim()) { addErrorStyle(phone); valid = false; }
+
+        if (!valid) {
+          showFormMessage("الرجاء إدخال جميع البيانات الشخصية المطلوبة.", false);
+        }
+      }
+
+      if (currentStep === 2) {
+        const governorate = document.getElementById("governorate");
+        const city = document.getElementById("city");
+
+        [governorate, city].forEach(clearErrorStyle);
+
+        if (!governorate.value.trim()) { addErrorStyle(governorate); valid = false; }
+        if (!city.value.trim()) { addErrorStyle(city); valid = false; }
+
+        if (!valid) {
+          showFormMessage("الرجاء إدخال بيانات العنوان كاملة.", false);
+        }
+      }
+
+      if (currentStep === 3) {
+        const documentType = document.querySelector('input[name="documentType"]:checked').value;
+        
+        if (documentType === "id") {
+          // Require both ID card images
+          if (!uploadState.idFront.url || !uploadState.idBack.url || !uploadState.personalPhoto.url) {
+            valid = false;
+            showFormMessage("يجب رفع جميع الصور (البطاقة أمام/خلف، والصورة الشخصية) قبل المتابعة.", false);
+          }
+        } else {
+          // Require birth certificate and personal photo
+          if (!uploadState.birthCert.url || !uploadState.personalPhoto.url) {
+            valid = false;
+            showFormMessage("يجب رفع صورة شهادة الميلاد والصورة الشخصية قبل المتابعة.", false);
+          }
+        }
+      }
+
+      return valid;
+    }
+
+    function showFormMessage(message, success = true) {
+      if (!formMessage) return;
+      formMessage.textContent = message;
+      formMessage.classList.remove("hidden");
+      if (success) {
+        formMessage.className = "mt-2 block rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 px-4 py-3 text-xs text-emerald-800 ring-1 ring-emerald-200 bounce-in";
+      } else {
+        formMessage.className = "mt-2 block rounded-xl bg-gradient-to-r from-red-50 to-red-100 px-4 py-3 text-xs text-red-800 ring-1 ring-red-200 bounce-in";
+      }
+    }
+
+    // ==================== إدارة رفع الصور ====================
+    
+    const uploadState = {
+      idFront: { url: "", uploading: false },
+      idBack: { url: "", uploading: false },
+      birthCert: { url: "", uploading: false },
+      personalPhoto: { url: "", uploading: false },
+    };
+
+    // DOM refs for uploads
+    const idFrontInput = document.getElementById("idFrontInput");
+    const idFrontStatus = document.getElementById("idFrontStatus");
+    const idFrontIcon = document.getElementById("idFrontIcon");
+
+    const idBackInput = document.getElementById("idBackInput");
+    const idBackStatus = document.getElementById("idBackStatus");
+    const idBackIcon = document.getElementById("idBackIcon");
+
+    const birthCertInput = document.getElementById("birthCertInput");
+    const birthCertStatus = document.getElementById("birthCertStatus");
+    const birthCertIcon = document.getElementById("birthCertIcon");
+
+    const personalPhotoInput = document.getElementById("personalPhotoInput");
+    const personalPhotoStatus = document.getElementById("personalPhotoStatus");
+    const personalPhotoIcon = document.getElementById("personalPhotoIcon");
+
+    idFrontInput.addEventListener("change", () => handleImageSelect("idFront", idFrontInput.files[0], idFrontStatus, idFrontIcon));
+    idBackInput.addEventListener("change", () => handleImageSelect("idBack", idBackInput.files[0], idBackStatus, idBackIcon));
+    birthCertInput.addEventListener("change", () => handleImageSelect("birthCert", birthCertInput.files[0], birthCertStatus, birthCertIcon));
+    personalPhotoInput.addEventListener("change", () => handleImageSelect("personalPhoto", personalPhotoInput.files[0], personalPhotoStatus, personalPhotoIcon));
+
+    function handleImageSelect(key, file, statusEl, iconEl) {
+      if (!file) return;
+      uploadToImgbb(key, file, statusEl, iconEl);
+    }
+
+    function setUploadUI(statusEl, iconEl, state) {
+      if (!statusEl || !iconEl) return;
+      if (state === "uploading") {
+        statusEl.textContent = "جاري رفع البيانات…";
+        iconEl.textContent = "⏳";
+        iconEl.className = "animate-pulse text-amber-500";
+      } else if (state === "success") {
+        statusEl.textContent = "تم الرفع بنجاح";
+        iconEl.textContent = "✅";
+        iconEl.className = "text-emerald-600";
+      } else if (state === "error") {
+        statusEl.textContent = "حدث خطأ، حاول مرة أخرى";
+        iconEl.textContent = "⚠️";
+        iconEl.className = "text-red-500";
+      } else {
+        statusEl.textContent = "لم يتم الرفع بعد";
+        iconEl.textContent = "⬆️";
+        iconEl.className = "text-slate-400";
+      }
+    }
+
+    async function uploadToImgbb(key, file, statusEl, iconEl) {
+      try {
+        if (!file) return;
+        uploadState[key].uploading = true;
+        setUploadUI(statusEl, iconEl, "uploading");
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const response = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbApiKey}`, {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await response.json();
+        if (data && data.success && data.data && data.data.url) {
+          uploadState[key].url = data.data.url;
+          uploadState[key].uploading = false;
+          setUploadUI(statusEl, iconEl, "success");
+        } else {
+          console.error("imgbb upload error", data);
+          uploadState[key].uploading = false;
+          setUploadUI(statusEl, iconEl, "error");
+          showFormMessage("تعذر رفع الصورة، الرجاء المحاولة مرة أخرى.", false);
+        }
+      } catch (err) {
+        console.error(err);
+        uploadState[key].uploading = false;
+        setUploadUI(statusEl, iconEl, "error");
+        showFormMessage("تعذر الاتصال بخادم رفع الصور، تأكد من اتصال الإنترنت وجرب مرة أخرى.", false);
+      }
+    }
+
+    // ==================== إرسال استمارة التقديم ====================
+    
+    async function handleSubmit() {
+      if (!validateCurrentStep()) return;
+
+      const documentType = document.querySelector('input[name="documentType"]:checked').value;
+      
+      // Check uploads based on document type
+      if (documentType === "id") {
+        if (
+          !uploadState.idFront.url ||
+          !uploadState.idBack.url ||
+          !uploadState.personalPhoto.url ||
+          uploadState.idFront.uploading ||
+          uploadState.idBack.uploading ||
+          uploadState.personalPhoto.uploading
+        ) {
+          showFormMessage("تأكد من اكتمال رفع جميع الصور قبل إرسال الطلب.", false);
+          return;
+        }
+      } else {
+        if (
+          !uploadState.birthCert.url ||
+          !uploadState.personalPhoto.url ||
+          uploadState.birthCert.uploading ||
+          uploadState.personalPhoto.uploading
+        ) {
+          showFormMessage("تأكد من اكتمال رفع جميع الصور قبل إرسال الطلب.", false);
+          return;
+        }
+      }
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const age = Number(document.getElementById("age").value);
+      const phone = document.getElementById("phone").value.trim();
+      const governorate = document.getElementById("governorate").value.trim();
+      const city = document.getElementById("city").value.trim();
+
+      // Final validation for required fields
+      if (!fullName || !age || !phone || !governorate || !city) {
+        showFormMessage("الرجاء التأكد من إدخال جميع البيانات المطلوبة.", false);
+        return;
+      }
+
+      // Prepare document data based on type
+      let documentData = {};
+      if (documentType === "id") {
+        documentData = {
+          id_card: {
+            front_image_url: uploadState.idFront.url,
+            back_image_url: uploadState.idBack.url,
+          }
+        };
+      } else {
+        documentData = {
+          birth_certificate_image_url: uploadState.birthCert.url,
+        };
+      }
+
+      const payload = {
+        tak: false,
+        full_name: fullName,
+        age: age,
+        address: {
+          governorate: governorate,
+          city: city,
+        },
+        contact: {
+          phone_number: phone,
+        },
+        documents: documentData,
+        personal_photo_url: uploadState.personalPhoto.url,
+        employment_code: "k62824",
+        created_at: new Date().toISOString(),
+        status: "pending",
+      };
+
+      try {
+        globalLoader.classList.remove("hidden");
+        globalLoader.classList.add("flex");
+
+        const dataRef = firebase.database().ref("data");
+        await dataRef.push(payload);
+
+        // حفظ بيانات التقديم في localStorage
+        localStorage.setItem('rti_application_phone', phone);
+        localStorage.setItem('rti_application_name', fullName);
+        localStorage.setItem('rti_application_date', new Date().toISOString());
+
+        globalLoader.classList.add("hidden");
+        globalLoader.classList.remove("flex");
+
+        // إخفاء زر التالي وزر التقديم بعد الإرسال الناجح
+        nextStepBtn.classList.add("hidden");
+        submitApplicationBtn.classList.add("hidden");
+        
+        // إنشاء تأثير الكونفيتي
+        createConfettiEffect();
+        
+        showFormMessage("🎉 ✅ تم إرسال طلبك بنجاح! سيتم التواصل معك عبر الرقم المسجل خلال 24-48 ساعة. يمكنك تتبع حالة طلبك من زر 'تتبع طلبي'.", true);
+
+      } catch (err) {
+        console.error("Firebase write error", err);
+        globalLoader.classList.add("hidden");
+        globalLoader.classList.remove("flex");
+        showFormMessage("حدث خطأ أثناء حفظ البيانات، الرجاء المحاولة مرة أخرى.", false);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById("applicationForm").reset();
+
+      // Reset uploads
+      Object.keys(uploadState).forEach((key) => {
+        uploadState[key].url = "";
+        uploadState[key].uploading = false;
+      });
+      
+      setUploadUI(idFrontStatus, idFrontIcon, "idle");
+      setUploadUI(idBackStatus, idBackIcon, "idle");
+      setUploadUI(birthCertStatus, birthCertIcon, "idle");
+      setUploadUI(personalPhotoStatus, personalPhotoIcon, "idle");
+
+      // Reset document type UI
+      idCardUploads.classList.remove("hidden");
+      birthCertificateUpload.classList.add("hidden");
+      
+      // إعادة إظهار الأزرار
+      nextStepBtn.classList.remove("hidden");
+      submitApplicationBtn.classList.add("hidden");
+      
+      currentStep = 1;
+      updateStepsUI();
+    }
+
+    // ==================== تتبع حالة الطلب ====================
+    
+    document.getElementById("checkStatusBtn").addEventListener("click", async function() {
+      const phoneNumber = document.getElementById("trackPhone").value.trim();
+      
+      if (!phoneNumber) {
+        alert("الرجاء إدخال رقم الهاتف للبحث");
+        return;
+      }
+
+      try {
+        globalLoader.classList.remove("hidden");
+        globalLoader.classList.add("flex");
+        
+        const dataRef = firebase.database().ref("data");
+        const snapshot = await dataRef.once("value");
+        
+        globalLoader.classList.add("hidden");
+        globalLoader.classList.remove("flex");
+        
+        const applicationsList = document.getElementById("applicationsList");
+        const noResults = document.getElementById("noResults");
+        const trackResults = document.getElementById("trackResults");
+        
+        applicationsList.innerHTML = "";
+        trackResults.classList.remove("hidden");
+        
+        let foundApplications = false;
+        
+        snapshot.forEach((childSnapshot) => {
+          const application = childSnapshot.val();
+          
+          if (application.contact && application.contact.phone_number === phoneNumber) {
+            foundApplications = true;
+            
+            const statusText = application.tak ? "✅ تم القبول" : "⏳ قيد الانتظار";
+            const statusClass = application.tak ? "bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-800" : "bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800";
+            const employeeStatus = application.tak ? 
+              '<div class="mt-3 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-50 to-emerald-100 px-3 py-1.5 text-xs font-bold text-emerald-700"><i class="fas fa-user-check text-xs"></i> موظف نشط في الشركة</div>' : 
+              '<div class="mt-2 text-xs text-slate-500 text-center">سيتم التواصل معك قريباً</div>';
+            
+            const applicationElement = document.createElement("div");
+            applicationElement.className = "rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 bounce-in";
+            applicationElement.innerHTML = `
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="text-sm font-black text-slate-900">${application.full_name || "غير محدد"}</p>
+                  <div class="mt-2 space-y-1">
+                    <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-user text-slate-400 text-xs"></i> السن: ${application.age || "غير محدد"}</p>
+                    <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-map-marker-alt text-slate-400 text-xs"></i> المحافظة: ${application.address?.governorate || "غير محدد"}</p>
+                  </div>
+                </div>
+                <span class="text-xs px-3 py-1.5 rounded-full ${statusClass} font-bold">${statusText}</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200/50">
+                <div class="flex items-center justify-between text-xs text-slate-700">
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-calendar text-slate-400 text-xs"></i>
+                    <span>${new Date(application.created_at).toLocaleDateString("ar-EG")}</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-id-card text-slate-400 text-xs"></i>
+                    <span class="font-bold">${application.employment_code || "غير محدد"}</span>
+                  </div>
+                </div>
+              </div>
+              ${employeeStatus}
+            `;
+            
+            applicationsList.appendChild(applicationElement);
+          }
+        });
+        
+        if (!foundApplications) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+        }
+        
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+        globalLoader.classList.add("hidden");
+        globalLoader.classList.remove("flex");
+        alert("حدث خطأ أثناء البحث، الرجاء المحاولة مرة أخرى.");
+      }
+    });
+
+    // التحقق من التقديم السابق عند تحميل الصفحة
+    window.addEventListener('load', function() {
+      showAlreadyAppliedNotification();
+      
+      // إضافة أنيميشن للأقسام عند التمرير
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-animate');
+          }
+        });
+      }, observerOptions);
+      
+      // مراقبة جميع الأقسام
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>
