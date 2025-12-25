@@ -21,7 +21,6 @@
       font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    /* Simple scrollbar styling */
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -34,12 +33,10 @@
       border-radius: 999px;
     }
 
-    /* Modal open helper */
     .modal-open {
       overflow: hidden;
     }
 
-    /* Animation for form steps */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(10px); }
       to { opacity: 1; transform: translateX(0); }
@@ -49,12 +46,10 @@
       animation: fadeIn 0.3s ease-out;
     }
 
-    /* Smooth transition for upload status */
     .upload-status {
       transition: all 0.3s ease;
     }
 
-    /* Animation for image modal */
     @keyframes zoomIn {
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
@@ -64,7 +59,6 @@
       animation: zoomIn 0.3s ease-out;
     }
 
-    /* Floating animation for CTA buttons */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
@@ -74,7 +68,6 @@
       animation: float 3s ease-in-out infinite;
     }
 
-    /* Gradient animation for hero section */
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -86,7 +79,6 @@
       animation: gradientShift 8s ease infinite;
     }
 
-    /* Card hover effects */
     .hover-card {
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
@@ -96,7 +88,6 @@
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
     }
 
-    /* Pulse animation for important elements */
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 5px rgba(52, 211, 153, 0.5); }
       50% { box-shadow: 0 0 20px rgba(52, 211, 153, 0.8); }
@@ -106,7 +97,6 @@
       animation: pulse-glow 2s ease-in-out infinite;
     }
 
-    /* Slide in animation for sections */
     @keyframes slideInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -116,7 +106,6 @@
       animation: slideInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
-    /* Bounce animation for notification */
     @keyframes bounceIn {
       0% { opacity: 0; transform: scale(0.5); }
       60% { opacity: 1; transform: scale(1.05); }
@@ -127,7 +116,6 @@
       animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Shine animation for premium elements */
     @keyframes shine {
       0% { background-position: -100px; }
       40%, 100% { background-position: 300px; }
@@ -139,7 +127,6 @@
       animation: shine 3s infinite;
     }
 
-    /* Progress bar animation */
     @keyframes progress {
       0% { width: 0%; }
       100% { width: 100%; }
@@ -149,18 +136,6 @@
       animation: progress 1.5s ease-out;
     }
 
-    /* Typewriter effect */
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #10b981 }
-    }
-
-    /* Gradient text */
     .gradient-text {
       background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
       -webkit-background-clip: text;
@@ -168,14 +143,12 @@
       background-clip: text;
     }
 
-    /* Glass morphism effect */
     .glass-effect {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Wave animation */
     @keyframes wave {
       0% { transform: translateX(0); }
       50% { transform: translateX(-30px); }
@@ -186,10 +159,24 @@
       animation: wave 5s ease-in-out infinite;
     }
 
-    /* Confetti animation */
     @keyframes confetti {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+    }
+
+    @keyframes countUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .count-animation {
+      animation: countUp 0.8s ease-out;
     }
   </style>
 </head>
@@ -306,7 +293,6 @@
   <main class="pt-20 lg:pt-24">
     <!-- Hero / Landing -->
     <section id="home" class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white">
-      <!-- Animated background elements -->
       <div class="absolute inset-0 overflow-hidden">
         <div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
         <div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"></div>
@@ -317,7 +303,7 @@
         <div class="flex-1 space-y-8">
           <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-slate-100 ring-1 ring-white/20 backdrop-blur-sm hover-card">
             <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 pulse-glow"></span>
-            <span>شركة مصرية قانونية – دخل من أول يوم</span>
+            <span>شركة مصرية قانونية – دخل من أول يوم + نظام الإحالات</span>
           </div>
           <div>
             <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
@@ -325,7 +311,7 @@
               <span class="block text-2xl font-bold text-emerald-300 sm:text-3xl lg:text-4xl mt-2">Response To Intervention</span>
             </h1>
             <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-100/90 sm:text-lg">
-              شركة متخصصة في الدعاية والإعلان وتوريد العمالة المؤهلة، بنظام واضح وشفاف يضمن لك دخل بدون سقف، وبإشراف إداري مباشر من مقر حقيقي مسجل بالقوى العاملة.
+              شركة متخصصة في الدعاية والإعلان وتوريد العمالة المؤهلة، بنظام واضح وشفاف يضمن لك دخل بدون سقف، مع نظام إحالات يحقق لك دخلاً إضافياً.
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-4">
@@ -342,12 +328,12 @@
           </div>
           <div class="grid max-w-2xl grid-cols-2 gap-4 text-xs text-slate-100/80 sm:text-sm">
             <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <p class="text-xs font-semibold text-emerald-300">الدخل</p>
+              <p class="text-xs font-semibold text-emerald-300">الدخل الأساسي</p>
               <p class="mt-2 font-bold text-white">100 جنيه لكل عميل – بدون حد أقصى</p>
             </div>
             <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <p class="text-xs font-semibold text-emerald-300">الضمانات</p>
-              <p class="mt-2 font-bold text-white">مقر رسمي + عقود حقيقية + فريق +80 موظف</p>
+              <p class="text-xs font-semibold text-emerald-300">نظام الإحالات</p>
+              <p class="mt-2 font-bold text-white">كود خاص + نقاط لكل إحالة ناجحة</p>
             </div>
           </div>
         </div>
@@ -362,12 +348,75 @@
             />
             <h2 class="mb-2 text-lg font-black text-slate-900">استمارة التقديم الأونلاين – 200 جنيه</h2>
             <p class="text-xs leading-relaxed text-slate-600">
-              التقديم الأونلاين معتمد ورسمي، برسوم 200 جنيه غير قابلة للاسترداد، يشمل مراجعة بياناتك والتواصل معك لتحديد الخطوات التالية.
+              التقديم الأونلاين معتمد ورسمي، برسوم 200 جنيه غير قابلة للاسترداد، مع كود إحالة خاص بك.
             </p>
             <button id="openApplicationBtnCard" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-[1.02] transition-all duration-300">
               <i class="fas fa-file-import text-sm"></i>
               قدم أونلاين الآن
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral System Section -->
+    <section class="bg-gradient-to-b from-emerald-50 to-white py-12 lg:py-16">
+      <div class="mx-auto max-w-6xl px-4 lg:px-8">
+        <div class="section-animate">
+          <div class="text-center mb-10">
+            <h2 class="text-2xl font-black text-slate-900 sm:text-3xl">نظام <span class="gradient-text">الإحالات والمكافآت</span></h2>
+            <p class="mt-3 text-sm text-emerald-700">احصل على نقاط إضافية لكل صديق تقوم بإحالته</p>
+            <div class="mt-4 h-1 w-16 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
+          </div>
+          
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="rounded-2xl bg-gradient-to-br from-white to-emerald-50 p-5 shadow-lg ring-1 ring-emerald-100/50 hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                <i class="fas fa-id-card text-emerald-600 text-lg"></i>
+              </div>
+              <h3 class="text-base font-black text-slate-900">كود موظف فريد</h3>
+              <p class="mt-2 text-sm text-slate-700">
+                يحصل كل موظف جديد على كود فريد مثل TRX544378 يمكنه مشاركته مع الأصدقاء.
+              </p>
+            </div>
+            
+            <div class="rounded-2xl bg-gradient-to-br from-white to-emerald-50 p-5 shadow-lg ring-1 ring-emerald-100/50 hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                <i class="fas fa-users text-emerald-600 text-lg"></i>
+              </div>
+              <h3 class="text-base font-black text-slate-900">نظام النقاط</h3>
+              <p class="mt-2 text-sm text-slate-700">
+                كل إحالة ناجحة تزيد من نقاطك (num) في قاعدة البيانات، مع متابعة مباشرة.
+              </p>
+            </div>
+            
+            <div class="rounded-2xl bg-gradient-to-br from-white to-emerald-50 p-5 shadow-lg ring-1 ring-emerald-100/50 hover-card">
+              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
+                <i class="fas fa-gift text-emerald-600 text-lg"></i>
+              </div>
+              <h3 class="text-base font-black text-slate-900">مكافآت الإحالات</h3>
+              <p class="mt-2 text-sm text-slate-700">
+                النقاط المتراكمة تؤهلك للحصول على مكافآت وترقيات داخل الشركة.
+              </p>
+            </div>
+          </div>
+          
+          <div class="mt-8 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 p-5 text-white">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h3 class="text-base font-black">كيف يعمل نظام الإحالات؟</h3>
+                <ul class="mt-2 list-disc space-y-1 pr-5 text-sm text-slate-100/90">
+                  <li>يحصل كل موظف على كود إحالة فريد</li>
+                  <li>عند تقديم صديق باستخدام الكود، تزداد نقاطك</li>
+                  <li>النقاط تظهر في تتبع الطلبات</li>
+                  <li>أعلى النقاط تحصل على مكافآت خاصة</li>
+                </ul>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-black text-emerald-300">+1</div>
+                <p class="text-xs text-emerald-200">نقطة لكل إحالة</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -424,18 +473,6 @@
                 <li>جروب فيسبوك يضم أكثر من 80 موظفًا حاليًا.</li>
                 <li>تعاقدات حقيقية مع شركات ومؤسسات مختلفة.</li>
                 <li>دخل ثابت ومتغير من أول يوم بعد اجتياز التدريب.</li>
-              </ul>
-            </div>
-            
-            <div class="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 hover-card">
-              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 p-3">
-                <i class="fas fa-file-contract text-emerald-600 text-lg"></i>
-              </div>
-              <h3 class="text-base font-black text-slate-900">نظام التقديم</h3>
-              <ul class="mt-3 list-disc space-y-2 pr-5 text-sm text-slate-700">
-                <li>من مقر الشركة: <span class="font-bold text-emerald-600">مجاني</span>.</li>
-                <li>أونلاين: <span class="font-bold text-emerald-600">200 جنيه</span> (غير قابلة للاسترداد).</li>
-                <li>التقديم الأونلاين يتم حصريًا عبر مستر مراد.</li>
               </ul>
             </div>
           </div>
@@ -516,60 +553,6 @@
       </div>
     </section>
 
-    <!-- Guarantees & Income -->
-    <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16 lg:py-20">
-      <div class="mx-auto max-w-6xl px-4 lg:px-8">
-        <div class="section-animate">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-black sm:text-4xl">الضمانات والمصداقية</h2>
-            <p class="mt-3 text-base leading-relaxed text-slate-100/90 max-w-3xl mx-auto">
-              RTI – EG ليست عملًا فرديًا أو نشاطًا غير واضح، بل شركة مصرية قانونية لها وجود حقيقي وضمانات واضحة لكل من ينضم لفريقها.
-            </p>
-            <div class="mt-6 h-1 w-20 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full mx-auto"></div>
-          </div>
-          
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
-                <i class="fas fa-map-marker-alt text-emerald-300 text-lg"></i>
-              </div>
-              <h3 class="text-sm font-black">مقر رسمي موثق</h3>
-              <p class="mt-2 text-xs text-slate-200">
-                المقر موجود فعليًا، ويمكنك الوصول إليه بسهولة عبر Google Maps.
-              </p>
-            </div>
-            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
-                <i class="fas fa-file-contract text-emerald-300 text-lg"></i>
-              </div>
-              <h3 class="text-sm font-black">مستندات قانونية</h3>
-              <p class="mt-2 text-xs text-slate-200">
-                الشركة تمتلك سجلًا تجاريًا وبطاقة ضريبية ومسجلة بالقوى العاملة.
-              </p>
-            </div>
-            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
-                <i class="fas fa-users text-emerald-300 text-lg"></i>
-              </div>
-              <h3 class="text-sm font-black">فريق حقيقي</h3>
-              <p class="mt-2 text-xs text-slate-200">
-                جروب فيسبوك يضم أكثر من 80 موظفًا من فريق RTI – EG.
-              </p>
-            </div>
-            <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur-sm hover-card">
-              <div class="mb-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 p-3">
-                <i class="fas fa-money-bill-trend-up text-emerald-300 text-lg"></i>
-              </div>
-              <h3 class="text-sm font-black">دخل من أول يوم</h3>
-              <p class="mt-2 text-xs text-slate-200">
-                بعد فترة التدريب وتحقيق التارجت، تبدأ في تحقيق دخل من أول يوم.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Apply CTA section -->
     <section id="apply" class="mx-auto max-w-6xl px-4 py-16 lg:px-8 lg:py-20">
       <div class="section-animate">
@@ -641,12 +624,12 @@
           <div class="flex items-center gap-3 mb-6">
             <img src="https://i.ibb.co/JRjW9C9m/1000149030.jpg" alt="شعار RTI – EG" class="h-12 w-12 rounded-full border-2 border-white object-cover shadow-md" />
             <div class="leading-tight">
-              <p class="text-sm font-black text-slate-900">RTI – EG</p>
+              <p class="text-sm font-bold text-slate-900">RTI – EG</p>
               <p class="text-[11px] font-medium text-emerald-600">Response To Intervention</p>
             </div>
           </div>
           
-          <h3 class="text-sm font-black text-slate-900 mb-3">مقر RTI – EG</h3>
+          <h3 class="text-sm font-bold text-slate-900 mb-3">مقر RTI – EG</h3>
           <p class="text-sm text-slate-700">
             شارع مؤسسة الزكاة – أمام الكوبري الجديد – سنتر شاهين – بن الصقر – مترو عزبة النخل.
           </p>
@@ -669,7 +652,7 @@
         </div>
         
         <div class="section-animate">
-          <h3 class="text-sm font-black text-slate-900 mb-4">روابط سريعة</h3>
+          <h3 class="text-sm font-bold text-slate-900 mb-4">روابط سريعة</h3>
           <div class="grid grid-cols-2 gap-3">
             <a href="#home" class="rounded-lg bg-slate-50 p-3 text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-emerald-600 transition-all duration-300">
               <i class="fas fa-home text-emerald-500 mr-2"></i>
@@ -698,9 +681,9 @@
           </div>
           
           <div class="mt-8 rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 p-4">
-            <h4 class="text-xs font-black text-emerald-800 mb-2">للتواصل السريع</h4>
+            <h4 class="text-xs font-bold text-emerald-800 mb-2">نظام الإحالات</h4>
             <p class="text-xs text-emerald-700">
-              للاستفسارات أو المساعدة في التقديم، يمكنك زيارة مقر الشركة خلال أوقات العمل أو التواصل عبر صفحة الفيسبوك.
+              كل موظف يحصل على كود إحالة فريد. شارك كودك مع الأصدقاء واكسب نقاطاً إضافية.
             </p>
           </div>
         </div>
@@ -716,7 +699,7 @@
       
       <div class="flex items-center justify-between border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white px-6 py-4">
         <div>
-          <p class="text-sm font-black text-slate-900">استمارة التقديم – RTI – EG</p>
+          <p class="text-sm font-bold text-slate-900">استمارة التقديم – RTI – EG</p>
           <p class="text-[11px] text-slate-500">املأ البيانات بدقة، جميع الحقول مطلوبة.</p>
         </div>
         <button id="closeApplicationModal" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-600 hover:bg-slate-100 transition-all duration-300 hover:scale-110">✕</button>
@@ -726,18 +709,18 @@
         <!-- Step indicator -->
         <div class="mb-6 flex items-center justify-between gap-2">
           <div class="flex flex-1 items-center gap-2">
-            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-black text-white shadow-md" data-step="1">1</div>
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-bold text-white shadow-md" data-step="1">1</div>
             <div class="h-1.5 flex-1 bg-emerald-500 progress-bar"></div>
-            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm" data-step="2">2</div>
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-bold text-slate-500 shadow-sm" data-step="2">2</div>
             <div class="h-1.5 flex-1 bg-slate-200"></div>
-            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm" data-step="3">3</div>
+            <div class="step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-bold text-slate-500 shadow-sm" data-step="3">3</div>
           </div>
         </div>
 
         <form id="applicationForm" class="space-y-7">
           <!-- Step 1: Personal info -->
           <div class="form-step space-y-5" data-step="1">
-            <h3 class="text-sm font-black text-slate-900">الخطوة 1 – البيانات الشخصية</h3>
+            <h3 class="text-sm font-bold text-slate-900">الخطوة 1 – البيانات الشخصية</h3>
             <div>
               <label class="mb-2 block text-xs font-bold text-slate-700" for="fullName">الاسم الثلاثي</label>
               <input id="fullName" type="text" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" placeholder="اكتب اسمك ثلاثي بالكامل" />
@@ -752,11 +735,35 @@
                 <input id="phone" type="tel" required class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" placeholder="مثال: 010xxxxxxxx" />
               </div>
             </div>
+            
+            <!-- كود الإحالة -->
+            <div>
+              <label class="mb-2 block text-xs font-bold text-slate-700" for="referralCode">
+                كود الإحالة (اختياري)
+                <span class="text-emerald-600 font-normal"> - أدخل كود صديقك إذا كان لديك</span>
+              </label>
+              <div class="relative">
+                <input 
+                  id="referralCode" 
+                  type="text" 
+                  class="block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 transition-all duration-300" 
+                  placeholder="أدخل كود صديقك مثل TRX544378"
+                  maxlength="9"
+                />
+                <div id="referralCodeStatus" class="absolute left-3 top-1/2 -translate-y-1/2 hidden">
+                  <span id="referralCodeIcon" class="text-xs"></span>
+                </div>
+              </div>
+              <p id="referralCodeMessage" class="mt-1 text-xs text-slate-500 hidden"></p>
+              <p class="mt-1 text-xs text-slate-500">
+                إذا كان لديك كود صديق، أدخله هنا لزيادة نقاطه في النظام.
+              </p>
+            </div>
           </div>
 
           <!-- Step 2: Address -->
           <div class="form-step hidden space-y-5" data-step="2">
-            <h3 class="text-sm font-black text-slate-900">الخطوة 2 – العنوان</h3>
+            <h3 class="text-sm font-bold text-slate-900">الخطوة 2 – العنوان</h3>
             <div class="grid gap-4 md:grid-cols-2">
               <div>
                 <label class="mb-2 block text-xs font-bold text-slate-700" for="governorate">المحافظة</label>
@@ -790,7 +797,7 @@
 
           <!-- Step 3: Documents -->
           <div class="form-step hidden space-y-5" data-step="3">
-            <h3 class="text-sm font-black text-slate-900">الخطوة 3 – رفع المستندات</h3>
+            <h3 class="text-sm font-bold text-slate-900">الخطوة 3 – رفع المستندات</h3>
             <p class="text-xs text-slate-600">الرجاء التأكد من وضوح الصور وجودتها قبل الرفع.</p>
 
             <div class="space-y-5" id="idCardUploads">
@@ -841,10 +848,16 @@
 
           <!-- Step 4: Confirm -->
           <div class="form-step hidden space-y-5" data-step="4">
-            <h3 class="text-sm font-black text-slate-900">الخطوة 4 – تأكيد وإرسال</h3>
+            <h3 class="text-sm font-bold text-slate-900">الخطوة 4 – تأكيد وإرسال</h3>
             <p class="text-sm text-slate-700">
               برجاء مراجعة بياناتك قبل الإرسال. بالضغط على زر <span class="font-bold text-emerald-600">"تقديم طلب"</span> سيتم تسجيل طلبك في قاعدة بيانات الشركة.
             </p>
+            
+            <div id="referralInfo" class="rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 px-4 py-3 text-xs text-emerald-800 ring-1 ring-emerald-200 hidden">
+              <p class="font-bold">🎯 معلومات الإحالة:</p>
+              <p id="referralInfoText" class="mt-1"></p>
+            </div>
+            
             <p class="mt-2 text-xs text-slate-500">بعد الإرسال ستظهر لك رسالة تأكيد، وسيتم التواصل معك عبر رقم الهاتف المسجل.</p>
             <div id="formMessage" class="hidden rounded-xl px-4 py-3 text-xs"></div>
           </div>
@@ -890,7 +903,7 @@
     <div class="relative max-h-[90vh] w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white px-6 py-4">
         <div>
-          <p class="text-sm font-black text-slate-900">تتبع حالة طلبك</p>
+          <p class="text-sm font-bold text-slate-900">تتبع حالة طلبك</p>
           <p class="text-[11px] text-slate-500">أدخل رقم الهاتف المسجل للتحقق من حالة طلبك.</p>
         </div>
         <button id="closeTrackModal" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-600 hover:bg-slate-100 transition-all duration-300 hover:scale-110">✕</button>
@@ -916,7 +929,7 @@
 
         <!-- نتائج البحث ستظهر هنا -->
         <div id="trackResults" class="mt-6 hidden space-y-4">
-          <h3 class="text-sm font-black text-slate-900">نتائج البحث:</h3>
+          <h3 class="text-sm font-bold text-slate-900">نتائج البحث:</h3>
           
           <div id="applicationsList" class="space-y-4 max-h-60 overflow-y-auto">
             <!-- سيتم إضافة التطبيقات هنا ديناميكيًا -->
@@ -959,6 +972,13 @@
     const alreadyAppliedNotification = document.getElementById("alreadyAppliedNotification");
     const confettiContainer = document.getElementById("confettiContainer");
 
+    // دالة لتوليد كود موظف فريد
+    function generateEmployeeCode() {
+      const prefix = "TRX";
+      const randomNumbers = Math.floor(100000 + Math.random() * 900000);
+      return prefix + randomNumbers;
+    }
+
     // التحقق من وجود بيانات التقديم في localStorage
     function checkIfAlreadyApplied() {
       const savedPhone = localStorage.getItem('rti_application_phone');
@@ -970,13 +990,89 @@
       return null;
     }
 
+    // التحقق من صحة كود الإحالة
+    async function validateReferralCode(code) {
+      if (!code || code.trim() === '') return { valid: false, message: '' };
+      
+      const cleanedCode = code.trim().toUpperCase();
+      
+      // التحقق من تنسيق الكود
+      if (!cleanedCode.startsWith('TRX') || cleanedCode.length !== 9 || !/^TRX\d{6}$/.test(cleanedCode)) {
+        return { 
+          valid: false, 
+          message: '❌ تنسيق الكود غير صحيح. يجب أن يكون مثل TRX544378' 
+        };
+      }
+      
+      try {
+        const dataRef = firebase.database().ref("data");
+        const snapshot = await dataRef.once("value");
+        
+        let foundUser = null;
+        snapshot.forEach((childSnapshot) => {
+          const user = childSnapshot.val();
+          if (user.employee_code === cleanedCode) {
+            foundUser = user;
+          }
+        });
+        
+        if (foundUser) {
+          return { 
+            valid: true, 
+            message: `✅ تم التحقق من كود ${cleanedCode} بنجاح`,
+            user: foundUser,
+            userId: foundUser.id || null
+          };
+        } else {
+          return { 
+            valid: false, 
+            message: '❌ الكود غير موجود في قاعدة البيانات' 
+          };
+        }
+      } catch (error) {
+        console.error("Error validating referral code:", error);
+        return { 
+          valid: false, 
+          message: '❌ حدث خطأ في التحقق من الكود' 
+        };
+      }
+    }
+
+    // تحديث نقاط المستخدم عند إحالة ناجحة
+    async function updateUserPoints(userId) {
+      if (!userId) return false;
+      
+      try {
+        const userRef = firebase.database().ref(`data/${userId}`);
+        const snapshot = await userRef.once("value");
+        const user = snapshot.val();
+        
+        if (user) {
+          // تحديث حقل num (النقاط)
+          const currentPoints = user.num || 0;
+          const newPoints = currentPoints + 1;
+          
+          await userRef.update({
+            num: newPoints,
+            last_referral_date: new Date().toISOString()
+          });
+          
+          console.log(`تم تحديث نقاط المستخدم ${userId} إلى ${newPoints}`);
+          return true;
+        }
+        return false;
+      } catch (error) {
+        console.error("Error updating user points:", error);
+        return false;
+      }
+    }
+
     // عرض إشعار إذا كان المستخدم قد قدم مسبقاً
     function showAlreadyAppliedNotification() {
       const applicationData = checkIfAlreadyApplied();
       if (applicationData) {
         setTimeout(() => {
           alreadyAppliedNotification.classList.remove('hidden');
-          // إخفاء الإشعار بعد 5 ثواني
           setTimeout(() => {
             alreadyAppliedNotification.classList.add('hidden');
           }, 5000);
@@ -1006,7 +1102,6 @@
         confettiContainer.appendChild(confetti);
       }
       
-      // إخفاء الكونفيتي بعد 3 ثوان
       setTimeout(() => {
         confettiContainer.classList.add('hidden');
         confettiContainer.innerHTML = '';
@@ -1028,24 +1123,19 @@
       const btn = document.getElementById(id);
       if (btn) {
         btn.addEventListener("click", () => {
-          // التحقق إذا كان المستخدم قد قدم مسبقاً
           const applicationData = checkIfAlreadyApplied();
           if (applicationData) {
-            // إذا كان قد قدم مسبقاً، نفتح نافذة تتبع الطلب بدلاً من استمارة جديدة
             openTrackModal();
-            // عرض رسالة توضيحية
             setTimeout(() => {
               const trackPhoneInput = document.getElementById("trackPhone");
               if (trackPhoneInput) {
                 trackPhoneInput.value = applicationData.phone;
-                // تشغيل البحث التلقائي
                 setTimeout(() => {
                   document.getElementById("checkStatusBtn").click();
                 }, 500);
               }
             }, 300);
           } else {
-            // إذا لم يقدم مسبقاً، نفتح استمارة التقديم
             openApplicationModal();
           }
         });
@@ -1068,7 +1158,6 @@
       applicationModal.classList.remove("hidden");
       applicationModal.classList.add("flex");
       body.classList.add("modal-open");
-      // Reset to step 1 each time
       currentStep = 1;
       updateStepsUI();
       resetForm();
@@ -1096,7 +1185,6 @@
       trackApplicationModal.classList.remove("hidden");
       trackApplicationModal.classList.add("flex");
       body.classList.add("modal-open");
-      // Reset track results
       document.getElementById("trackResults").classList.add("hidden");
       document.getElementById("applicationsList").innerHTML = "";
       document.getElementById("noResults").classList.add("hidden");
@@ -1122,6 +1210,68 @@
       }
     });
 
+    // ==================== التحقق من كود الإحالة أثناء الكتابة ====================
+    
+    const referralCodeInput = document.getElementById("referralCode");
+    const referralCodeStatus = document.getElementById("referralCodeStatus");
+    const referralCodeIcon = document.getElementById("referralCodeIcon");
+    const referralCodeMessage = document.getElementById("referralCodeMessage");
+    const referralInfo = document.getElementById("referralInfo");
+    const referralInfoText = document.getElementById("referralInfoText");
+    
+    let referralValidationResult = null;
+    let referralUserId = null;
+    
+    referralCodeInput.addEventListener("input", async function() {
+      const code = this.value.trim().toUpperCase();
+      
+      if (code.length === 0) {
+        referralCodeStatus.classList.add("hidden");
+        referralCodeMessage.classList.add("hidden");
+        referralValidationResult = null;
+        referralUserId = null;
+        return;
+      }
+      
+      // التحقق الأساسي للتنسيق
+      if (code.length === 9 && code.startsWith("TRX")) {
+        referralCodeStatus.classList.remove("hidden");
+        referralCodeIcon.textContent = "⏳";
+        referralCodeIcon.className = "text-amber-500 animate-pulse";
+        referralCodeMessage.textContent = "جاري التحقق من الكود...";
+        referralCodeMessage.classList.remove("hidden");
+        referralCodeMessage.className = "mt-1 text-xs text-amber-600";
+        
+        // التحقق من قاعدة البيانات
+        const result = await validateReferralCode(code);
+        referralValidationResult = result;
+        
+        if (result.valid) {
+          referralCodeIcon.textContent = "✅";
+          referralCodeIcon.className = "text-emerald-600";
+          referralCodeMessage.textContent = result.message;
+          referralCodeMessage.className = "mt-1 text-xs text-emerald-600";
+          referralUserId = result.userId;
+        } else {
+          referralCodeIcon.textContent = "❌";
+          referralCodeIcon.className = "text-red-500";
+          referralCodeMessage.textContent = result.message;
+          referralCodeMessage.className = "mt-1 text-xs text-red-600";
+          referralValidationResult = null;
+          referralUserId = null;
+        }
+      } else if (code.length > 0) {
+        referralCodeStatus.classList.remove("hidden");
+        referralCodeIcon.textContent = "❌";
+        referralCodeIcon.className = "text-red-500";
+        referralCodeMessage.textContent = "تنسيق الكود غير صحيح. يجب أن يكون مثل TRX544378";
+        referralCodeMessage.classList.remove("hidden");
+        referralCodeMessage.className = "mt-1 text-xs text-red-600";
+        referralValidationResult = null;
+        referralUserId = null;
+      }
+    });
+
     // ==================== إدارة القائمة المتنقلة ====================
     
     const mobileMenuToggle = document.getElementById("mobileMenuToggle");
@@ -1140,7 +1290,6 @@
 
     // ==================== وظائف عامة ====================
     
-    // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const targetId = link.getAttribute("href");
@@ -1197,6 +1346,14 @@
         if (validateCurrentStep()) {
           currentStep++;
           updateStepsUI();
+          
+          // عند الانتقال إلى الخطوة 4، عرض معلومات الإحالة إذا كانت صحيحة
+          if (currentStep === 4 && referralValidationResult && referralValidationResult.valid) {
+            referralInfo.classList.remove("hidden");
+            referralInfoText.textContent = `تم التحقق من كود الإحالة ${referralCodeInput.value.toUpperCase()} بنجاح. سيتم زيادة نقاط صاحب الكود عند تقديم طلبك.`;
+          } else {
+            referralInfo.classList.add("hidden");
+          }
         }
       }
     });
@@ -1204,7 +1361,6 @@
     submitApplicationBtn.addEventListener("click", handleSubmit);
 
     function updateStepsUI() {
-      // Show/hide steps
       document.querySelectorAll(".form-step").forEach((stepEl) => {
         const stepNum = Number(stepEl.getAttribute("data-step"));
         if (stepNum === currentStep) {
@@ -1214,19 +1370,17 @@
         }
       });
 
-      // Update indicators
       document.querySelectorAll(".step-indicator").forEach((ind) => {
         const stepNum = Number(ind.getAttribute("data-step"));
         if (stepNum < currentStep) {
-          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-black text-white shadow-md";
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-500 text-xs font-bold text-white shadow-md";
         } else if (stepNum === currentStep) {
-          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-white text-xs font-black text-emerald-700 shadow-sm";
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-emerald-500 bg-white text-xs font-bold text-emerald-700 shadow-sm";
         } else {
-          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-black text-slate-500 shadow-sm";
+          ind.className = "step-indicator flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-xs font-bold text-slate-500 shadow-sm";
         }
       });
 
-      // Buttons states
       prevStepBtn.disabled = currentStep === 1;
       if (currentStep === maxStep) {
         nextStepBtn.classList.add("hidden");
@@ -1236,7 +1390,6 @@
         submitApplicationBtn.classList.add("hidden");
       }
 
-      // Reset message on step change
       if (formMessage) {
         formMessage.classList.add("hidden");
         formMessage.textContent = "";
@@ -1269,6 +1422,13 @@
         if (!valid) {
           showFormMessage("الرجاء إدخال جميع البيانات الشخصية المطلوبة.", false);
         }
+        
+        // التحقق من كود الإحالة إذا تم إدخاله
+        const referralCode = referralCodeInput.value.trim();
+        if (referralCode !== '' && referralValidationResult && !referralValidationResult.valid) {
+          showFormMessage("كود الإحالة غير صحيح. الرجاء تصحيحه أو تركه فارغاً.", false);
+          valid = false;
+        }
       }
 
       if (currentStep === 2) {
@@ -1289,13 +1449,11 @@
         const documentType = document.querySelector('input[name="documentType"]:checked').value;
         
         if (documentType === "id") {
-          // Require both ID card images
           if (!uploadState.idFront.url || !uploadState.idBack.url || !uploadState.personalPhoto.url) {
             valid = false;
             showFormMessage("يجب رفع جميع الصور (البطاقة أمام/خلف، والصورة الشخصية) قبل المتابعة.", false);
           }
         } else {
-          // Require birth certificate and personal photo
           if (!uploadState.birthCert.url || !uploadState.personalPhoto.url) {
             valid = false;
             showFormMessage("يجب رفع صورة شهادة الميلاد والصورة الشخصية قبل المتابعة.", false);
@@ -1326,7 +1484,6 @@
       personalPhoto: { url: "", uploading: false },
     };
 
-    // DOM refs for uploads
     const idFrontInput = document.getElementById("idFrontInput");
     const idFrontStatus = document.getElementById("idFrontStatus");
     const idFrontIcon = document.getElementById("idFrontIcon");
@@ -1444,11 +1601,57 @@
       const phone = document.getElementById("phone").value.trim();
       const governorate = document.getElementById("governorate").value.trim();
       const city = document.getElementById("city").value.trim();
+      const referralCode = referralCodeInput.value.trim().toUpperCase();
 
       // Final validation for required fields
       if (!fullName || !age || !phone || !governorate || !city) {
         showFormMessage("الرجاء التأكد من إدخال جميع البيانات المطلوبة.", false);
         return;
+      }
+
+      // توليد كود موظف فريد
+      let employeeCode = generateEmployeeCode();
+      let isCodeUnique = false;
+      let attempts = 0;
+      const maxAttempts = 10;
+
+      // التحقق من أن الكود فريد وغير مكرر
+      while (!isCodeUnique && attempts < maxAttempts) {
+        const dataRef = firebase.database().ref("data");
+        const snapshot = await dataRef.once("value");
+        
+        let codeExists = false;
+        snapshot.forEach((childSnapshot) => {
+          const user = childSnapshot.val();
+          if (user.employee_code === employeeCode) {
+            codeExists = true;
+          }
+        });
+        
+        if (!codeExists) {
+          isCodeUnique = true;
+        } else {
+          employeeCode = generateEmployeeCode();
+          attempts++;
+        }
+      }
+
+      // إذا فشلنا في إنشاء كود فريد بعد المحاولات
+      if (!isCodeUnique) {
+        showFormMessage("حدث خطأ في إنشاء الكود الفريد. الرجاء المحاولة مرة أخرى.", false);
+        return;
+      }
+
+      // إعداد بيانات الإحالة
+      let referralData = {};
+      let referralUserIdToUpdate = null;
+      
+      if (referralValidationResult && referralValidationResult.valid) {
+        referralData = {
+          referred_by: referralCode,
+          referral_valid: true
+        };
+        referralUserIdToUpdate = referralUserId;
       }
 
       // Prepare document data based on type
@@ -1467,6 +1670,7 @@
       }
 
       const payload = {
+        id: Date.now().toString(), // إضافة معرف فريد
         tak: false,
         full_name: fullName,
         age: age,
@@ -1480,8 +1684,11 @@
         documents: documentData,
         personal_photo_url: uploadState.personalPhoto.url,
         employment_code: "k62824",
+        employee_code: employeeCode, // الكود الفريد للموظف
+        num: 0, // عدد النقاط يبدأ من 0
         created_at: new Date().toISOString(),
         status: "pending",
+        ...referralData // إضافة بيانات الإحالة إذا كانت موجودة
       };
 
       try {
@@ -1489,12 +1696,19 @@
         globalLoader.classList.add("flex");
 
         const dataRef = firebase.database().ref("data");
-        await dataRef.push(payload);
+        const newRef = dataRef.push();
+        await newRef.set(payload);
+
+        // تحديث نقاط المستخدم الذي أحال هذا المستخدم
+        if (referralUserIdToUpdate) {
+          await updateUserPoints(referralUserIdToUpdate);
+        }
 
         // حفظ بيانات التقديم في localStorage
         localStorage.setItem('rti_application_phone', phone);
         localStorage.setItem('rti_application_name', fullName);
         localStorage.setItem('rti_application_date', new Date().toISOString());
+        localStorage.setItem('rti_employee_code', employeeCode);
 
         globalLoader.classList.add("hidden");
         globalLoader.classList.remove("flex");
@@ -1506,7 +1720,16 @@
         // إنشاء تأثير الكونفيتي
         createConfettiEffect();
         
-        showFormMessage("🎉 ✅ تم إرسال طلبك بنجاح! سيتم التواصل معك عبر الرقم المسجل خلال 24-48 ساعة. يمكنك تتبع حالة طلبك من زر 'تتبع طلبي'.", true);
+        let successMessage = `🎉 ✅ تم إرسال طلبك بنجاح!<br>`;
+        successMessage += `📞 سيتم التواصل معك عبر الرقم المسجل خلال 24-48 ساعة.<br>`;
+        successMessage += `🔑 <strong>كودك الفريد:</strong> <span class="font-bold text-emerald-700">${employeeCode}</span><br>`;
+        successMessage += `📊 يمكنك تتبع حالة طلبك ونقاطك من زر 'تتبع طلبي'.`;
+        
+        if (referralValidationResult && referralValidationResult.valid) {
+          successMessage += `<br>🎯 تم زيادة نقاط صاحب الكود ${referralCode} بنجاح!`;
+        }
+        
+        showFormMessage(successMessage, true);
 
       } catch (err) {
         console.error("Firebase write error", err);
@@ -1537,6 +1760,13 @@
       // إعادة إظهار الأزرار
       nextStepBtn.classList.remove("hidden");
       submitApplicationBtn.classList.add("hidden");
+      
+      // إعادة تعيين بيانات الإحالة
+      referralCodeStatus.classList.add("hidden");
+      referralCodeMessage.classList.add("hidden");
+      referralInfo.classList.add("hidden");
+      referralValidationResult = null;
+      referralUserId = null;
       
       currentStep = 1;
       updateStepsUI();
@@ -1583,12 +1813,15 @@
               '<div class="mt-3 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-50 to-emerald-100 px-3 py-1.5 text-xs font-bold text-emerald-700"><i class="fas fa-user-check text-xs"></i> موظف نشط في الشركة</div>' : 
               '<div class="mt-2 text-xs text-slate-500 text-center">سيتم التواصل معك قريباً</div>';
             
+            const points = application.num || 0;
+            const employeeCode = application.employee_code || "لم يتم التحديد بعد";
+            
             const applicationElement = document.createElement("div");
             applicationElement.className = "rounded-2xl bg-gradient-to-br from-white to-slate-50 p-5 shadow-lg ring-1 ring-slate-100/50 bounce-in";
             applicationElement.innerHTML = `
               <div class="flex justify-between items-start">
                 <div>
-                  <p class="text-sm font-black text-slate-900">${application.full_name || "غير محدد"}</p>
+                  <p class="text-sm font-bold text-slate-900">${application.full_name || "غير محدد"}</p>
                   <div class="mt-2 space-y-1">
                     <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-user text-slate-400 text-xs"></i> السن: ${application.age || "غير محدد"}</p>
                     <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-map-marker-alt text-slate-400 text-xs"></i> المحافظة: ${application.address?.governorate || "غير محدد"}</p>
@@ -1596,6 +1829,18 @@
                 </div>
                 <span class="text-xs px-3 py-1.5 rounded-full ${statusClass} font-bold">${statusText}</span>
               </div>
+              
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 p-3 text-center">
+                  <div class="text-lg font-black text-emerald-600 count-animation">${points}</div>
+                  <p class="text-xs text-slate-600 mt-1">نقاط الإحالة</p>
+                </div>
+                <div class="rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 p-3 text-center">
+                  <div class="text-sm font-black text-emerald-800">${employeeCode}</div>
+                  <p class="text-xs text-emerald-600 mt-1">كود الموظف</p>
+                </div>
+              </div>
+              
               <div class="mt-4 pt-4 border-t border-slate-200/50">
                 <div class="flex items-center justify-between text-xs text-slate-700">
                   <div class="flex items-center gap-1">
@@ -1609,6 +1854,12 @@
                 </div>
               </div>
               ${employeeStatus}
+              
+              ${application.referred_by ? `
+                <div class="mt-3 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 p-3">
+                  <p class="text-xs font-bold text-blue-800"><i class="fas fa-user-friends text-xs mr-1"></i> تمت الإحالة بواسطة: <span class="font-black">${application.referred_by}</span></p>
+                </div>
+              ` : ''}
             `;
             
             applicationsList.appendChild(applicationElement);
@@ -1647,7 +1898,6 @@
         });
       }, observerOptions);
       
-      // مراقبة جميع الأقسام
       document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
       });
