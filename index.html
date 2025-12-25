@@ -793,7 +793,7 @@
             </div>
             <div>
               <label class="mb-2 block text-xs font-bold text-slate-700" for="employeeCode">
-                كود الموظف
+                كود الموظف المحيل
                 <span class="text-red-500 font-normal mr-1">*</span>
               </label>
               <div class="relative">
@@ -1162,7 +1162,7 @@
       return code;
     }
 
-    // فحص إذا كان كود الموظف موجود في قاعدة البيانات في عقده user_code
+    // فحص إذا كان كود الموظف موجود في قاعدة البيانات تحت عقده data
     async function checkEmployeeCode(code) {
       try {
         console.log('جاري التحقق من كود الموظف:', code);
@@ -1173,29 +1173,45 @@
 
         const sanitizedCode = code.trim().toLowerCase();
         
-        // البحث في قاعدة البيانات عن الكود في عقده user_code
+        // البحث في قاعدة البيانات في عقده data
         console.log('جاري البحث عن الكود في قاعدة البيانات...');
-        const usersRef = database.ref('users');
-        const snapshot = await usersRef.orderByChild('user_code').equalTo(sanitizedCode).once('value');
+        const dataRef = database.ref('data');
         
-        console.log('نتيجة البحث:', snapshot.exists());
+        // البحث في جميع السجلات في عقده data
+        const snapshot = await dataRef.once('value');
+        
+        console.log('تم جلب البيانات من عقده data');
         
         if (snapshot.exists()) {
-          const users = snapshot.val();
-          const userId = Object.keys(users)[0];
-          const userData = users[userId];
+          const allData = snapshot.val();
+          let foundEmployee = null;
+          let employeeId = null;
           
-          console.log('تم العثور على المستخدم:', userData);
+          // البحث عن الموظف بالكود المحدد
+          Object.keys(allData).forEach(key => {
+            const employee = allData[key];
+            if (employee.user_code && employee.user_code.toLowerCase() === sanitizedCode) {
+              foundEmployee = employee;
+              employeeId = key;
+            }
+          });
           
-          return {
-            isValid: true,
-            message: 'كود الموظف صالح',
-            userData: userData,
-            userId: userId
-          };
+          if (foundEmployee) {
+            console.log('تم العثور على الموظف:', foundEmployee);
+            
+            return {
+              isValid: true,
+              message: 'كود الموظف صالح',
+              userData: foundEmployee,
+              userId: employeeId
+            };
+          } else {
+            console.log('الكود غير موجود في قاعدة البيانات');
+            return { isValid: false, message: 'كود الموظف غير موجود في قاعدة البيانات' };
+          }
         } else {
-          console.log('الكود غير موجود في قاعدة البيانات');
-          return { isValid: false, message: 'كود الموظف غير موجود في قاعدة البيانات' };
+          console.log('لا توجد بيانات في عقده data');
+          return { isValid: false, message: 'لا توجد بيانات في النظام' };
         }
       } catch (error) {
         console.error('خطأ أثناء التحقق من كود الموظف:', error);
@@ -1203,12 +1219,12 @@
       }
     }
 
-    // زيادة عداد الإحالات للموظف
+    // زيادة عداد الإحالات للموظف المحيل (num)
     async function incrementReferralCount(userId) {
       try {
         console.log('جاري زيادة عداد الإحالات للمستخدم:', userId);
         
-        const userRef = database.ref('users/' + userId);
+        const userRef = database.ref('data/' + userId);
         const snapshot = await userRef.once('value');
         
         if (!snapshot.exists()) {
@@ -1224,7 +1240,6 @@
         
         await userRef.update({
           num: currentNum,
-          last_referral: new Date().toISOString(),
           updated_at: new Date().toISOString()
         });
         
@@ -1236,7 +1251,7 @@
       }
     }
 
-    // إنشاء مستخدم جديد مع كود فريد
+    // إنشاء مستخدم جديد في عقده data
     async function createNewUser(userData) {
       try {
         // توليد كود فريد
@@ -1246,18 +1261,25 @@
           user_code: generatedUserCode,
           num: 0, // عداد الإحالات يبدأ من 0
           full_name: userData.fullName || '',
-          phone: userData.phone || '',
           age: userData.age || '',
+          contact: {
+            phone_number: userData.phone || ''
+          },
+          address: userData.address || {},
+          documents: userData.documents || {},
+          personal_photo_url: userData.personalPhotoUrl || '',
+          status: "pending",
+          tak: false,
+          referred_by: referringEmployeeData ? referringEmployeeData.userId : null,
+          referred_by_user_code: referringEmployeeData ? referringEmployeeData.userData.user_code : null,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-          is_active: true,
-          referred_by: referringEmployeeData ? referringEmployeeData.userId : null
+          updated_at: new Date().toISOString()
         };
         
-        const newUserRef = database.ref('users').push();
+        const newUserRef = database.ref("data").push();
         await newUserRef.set(newUser);
         
-        console.log('تم إنشاء مستخدم جديد:', newUserRef.key, 'بكود:', generatedUserCode);
+        console.log('تم إنشاء مستخدم جديد في عقده data:', newUserRef.key, 'بكود:', generatedUserCode);
         return { userId: newUserRef.key, userCode: generatedUserCode };
       } catch (error) {
         console.error('خطأ في إنشاء مستخدم جديد:', error);
@@ -1860,11 +1882,17 @@
         globalLoader.classList.remove("hidden");
         globalLoader.classList.add("flex");
 
-        // 1. إنشاء مستخدم جديد لهذا المتقدم
+        // 1. إنشاء مستخدم جديد لهذا المتقدم في عقده data
         const newUserResult = await createNewUser({
           fullName: fullName,
           phone: phone,
-          age: age
+          age: age,
+          address: {
+            governorate: governorate,
+            city: city,
+          },
+          documents: documentData,
+          personalPhotoUrl: uploadState.personalPhoto.url
         });
 
         if (!newUserResult) {
@@ -1876,38 +1904,6 @@
         if (referringEmployeeData && referringEmployeeData.userId) {
           referralCount = await incrementReferralCount(referringEmployeeData.userId);
         }
-
-        // 3. حفظ بيانات التقديم
-        const payload = {
-          tak: false,
-          full_name: fullName,
-          age: age,
-          address: {
-            governorate: governorate,
-            city: city,
-          },
-          contact: {
-            phone_number: phone,
-          },
-          documents: documentData,
-          personal_photo_url: uploadState.personalPhoto.url,
-          employee_code: employeeCode, // الكود الذي أدخله المستخدم
-          user_code: newUserResult.userCode, // الكود الفريد الجديد للمستخدم
-          referred_by_user_id: referringEmployeeData ? referringEmployeeData.userId : null,
-          referred_by_user_code: referringEmployeeData ? referringEmployeeData.userData.user_code : null,
-          referral_count: referralCount,
-          created_at: new Date().toISOString(),
-          status: "pending",
-        };
-
-        const dataRef = database.ref("applications");
-        await dataRef.push(payload);
-
-        // حفظ بيانات التقديم في localStorage
-        localStorage.setItem('rti_application_phone', phone);
-        localStorage.setItem('rti_application_name', fullName);
-        localStorage.setItem('rti_application_date', new Date().toISOString());
-        localStorage.setItem('rti_user_code', newUserResult.userCode);
 
         globalLoader.classList.add("hidden");
         globalLoader.classList.remove("flex");
@@ -1923,12 +1919,18 @@
         if (referringEmployeeData) {
           successMessage += `\nتم تسجيل إحالتك تحت كود الموظف: ${employeeCode}`;
           if (referralCount !== null) {
-            successMessage += `\nتم زيادة عدد الإحالات للموظف إلى: ${referralCount}`;
+            successMessage += `\nتم زيادة عدد الإحالات للموظف المحيل إلى: ${referralCount}`;
           }
         }
         successMessage += `\nكودك الشخصي: ${newUserResult.userCode} (احفظه لمتابعة طلباتك القادمة)`;
         
         showFormMessage(successMessage, true);
+
+        // حفظ بيانات التقديم في localStorage
+        localStorage.setItem('rti_application_phone', phone);
+        localStorage.setItem('rti_application_name', fullName);
+        localStorage.setItem('rti_application_date', new Date().toISOString());
+        localStorage.setItem('rti_user_code', newUserResult.userCode);
 
       } catch (err) {
         console.error("Firebase write error", err);
@@ -1984,7 +1986,8 @@
         globalLoader.classList.remove("hidden");
         globalLoader.classList.add("flex");
         
-        const dataRef = database.ref("applications");
+        // البحث في عقده data
+        const dataRef = database.ref("data");
         const snapshot = await dataRef.orderByChild("contact/phone_number").equalTo(phoneNumber).once("value");
         
         globalLoader.classList.add("hidden");
@@ -2018,9 +2021,9 @@
                 <div class="mt-2 space-y-1">
                   <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-user text-slate-400 text-xs"></i> السن: ${application.age || "غير محدد"}</p>
                   <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-map-marker-alt text-slate-400 text-xs"></i> المحافظة: ${application.address?.governorate || "غير محدد"}</p>
-                  <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-id-card text-slate-400 text-xs"></i> كود الموظف المحيل: ${application.employee_code || "غير محدد"}</p>
+                  <p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-id-card text-slate-400 text-xs"></i> كود الموظف المحيل: ${application.referred_by_user_code || "غير محدد"}</p>
                   ${application.user_code ? `<p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-key text-slate-400 text-xs"></i> كودك الشخصي: <span class="font-bold text-emerald-600">${application.user_code}</span></p>` : ''}
-                  ${application.referral_count ? `<p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-users text-slate-400 text-xs"></i> عدد الإحالات: <span class="font-bold text-emerald-600">${application.referral_count}</span></p>` : ''}
+                  ${application.num !== undefined ? `<p class="text-xs text-slate-600 flex items-center gap-1"><i class="fas fa-users text-slate-400 text-xs"></i> عدد إحالاتك: <span class="font-bold text-emerald-600">${application.num}</span></p>` : ''}
                 </div>
               </div>
               <span class="text-xs px-3 py-1.5 rounded-full ${statusClass} font-bold">${statusText}</span>
